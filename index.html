@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spry DP Consulting</title>
+    <title>Spry DP Consulting - Data Strategy & AI for Business Growth</title>
+    <meta name="description" content="Unlock business value with data and AI. Spry DP provides expert consulting in data strategy, digital transformation, and AI initiatives for small to medium businesses.">
+    
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ConsultingFirm",
+      "name": "Spry DP Consulting",
+      "url": "https://sprydp.com",
+      "logo": "https://sprydp.com/logo.svg",
+      "description": "Expert data strategy consulting, helping businesses use data and AI for growth and operational efficiency.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-555-555-5555",
+        "email": "info@sprydp.com",
+        "contactType": "Sales"
+      }
+    }
+    </script>
+    
+    <!-- Open Graph & Twitter Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Spry DP - Data Strategy & AI Consulting">
+    <meta property="og:description" content="Unlock business value with expert data and AI strategy. Spry DP helps SMBs achieve growth and efficiency through data-driven initiatives.">
+    <meta property="og:image" content="https://sprydp.com/social-share-image.jpg">
+    <meta property="og:url" content="https://sprydp.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Spry DP - Data Strategy & AI Consulting">
+    <meta name="twitter:description" content="Unlock business value with expert data and AI strategy. Spry DP helps SMBs achieve growth and efficiency through data-driven initiatives.">
+    <meta name="twitter:image" content="https://sprydp.com/social-share-image.jpg">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-ieF3tQ2W6j00g31mK14eL9fN3K3l5b5/6J+5eR1qFzR0fS9eJ0gR2wR1z8z5k0M0b0e5C1p4zQz2/t5k5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -38,425 +73,323 @@
             background-image: linear-gradient(to right, #F5EFE6, #E5DCCF);
             position: relative;
         }
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body class="text-[#33302C]">
 
+    <!-- Google Analytics Tracking Code -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+
+      // Simple conversion tracking for consultation button
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('a[href="https://calendar.app.google/GC75d2DHsLeAnLWd7"]').addEventListener('click', function() {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-XXXXXXXXXX/YYYYYYYYYYYYYY',
+            'event_label': 'Book_Consultation_Click'
+          });
+        });
+      });
+    </script>
+
     <!-- Header & Navigation -->
     <header class="bg-[#FCF6F0] shadow-lg sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- SVG Logo for Spry DP - Pikes Peak Inspired -->
-            <a href="#" class="text-2xl font-bold text-[#33302C] flex items-center gap-2">
-                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center" aria-label="Main Navigation">
+            <a href="#" class="text-2xl font-bold text-[#33302C] flex items-center gap-2" aria-label="Spry Data Partner homepage">
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Spry DP Logo, mountain peak icon">
                     <path d="M50 20L25 80H75L50 20Z" fill="#832B03" />
                     <path d="M25 80L35 60H65L75 80H25Z" fill="#A56F4F" />
                     <path d="M40 50L50 30L60 50L40 50Z" fill="#832B03" />
                 </svg>
-                <span class="hidden md:inline">Spry DP</span>
+                <span class="hidden md:inline">Spry Data Partner</span>
             </a>
             <div class="hidden md:flex space-x-8">
-                <a href="#about" class="text-gray-600 hover:text-[#832B03] transition-colors">About</a>
                 <a href="#services" class="text-gray-600 hover:text-[#832B03] transition-colors">Services</a>
-                <a href="#dataofferings" class="text-gray-600 hover:text-[#832B03] transition-colors">Data Offerings</a>
                 <a href="#casestudies" class="text-gray-600 hover:text-[#832B03] transition-colors">Case Studies</a>
-                <a href="#experience" class="text-gray-600 hover:text-[#832B03] transition-colors">Experience</a>
+                <a href="#process" class="text-gray-600 hover:text-[#832B03] transition-colors">How We Work</a>
+                <a href="#about" class="text-gray-600 hover:text-[#832B03] transition-colors">Why Spry DP</a>
                 <a href="#contact" class="text-gray-600 hover:text-[#832B03] transition-colors">Contact</a>
             </div>
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-[#832B03] transition-colors focus:outline-none">
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-[#832B03] transition-colors focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open mobile menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
         </nav>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
-            <a href="#about" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">About</a>
             <a href="#services" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Services</a>
-            <a href="#dataofferings" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Data Offerings</a>
             <a href="#casestudies" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Case Studies</a>
-            <a href="#experience" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Experience</a>
-            <a href="#contact" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Contact</a>
+            <a href="#process" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">How We Work</a>
+            <a href="#about" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Why Spry DP</a>
+                <a href="#contact" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Contact</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-pattern py-24 md:py-48 flex items-center">
+    <section id="hero" class="hero-pattern py-24 md:py-48 flex items-center" role="region" aria-label="Spry DP Consulting Hero Section">
         <div class="container mx-auto px-6 text-center">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#33302C] leading-tight mb-4">
-                Driving Business Value with Data & AI
+                Unlock Measurable Business Value with Data & AI
             </h1>
             <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                As a seasoned leader in enterprise data and AI strategy, I help organizations navigate digital transformation and unlock measurable business value through data-driven initiatives.
+                Spry DP helps you develop and execute a clear, profitable data strategy. We turn your data into a strategic asset that drives growth and operational efficiency.
             </p>
-            <div class="flex justify-center">
-                <a href="https://calendar.app.google/GC75d2DHsLeAnLWd7" target="_blank" class="bg-[#832B03] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#A56F4F] transition-all duration-300 transform hover:scale-105">
+            <div class="flex justify-center flex-wrap gap-4">
+                <a href="https://calendar.app.google/GC75d2DHsLeAnLWd7" target="_blank" class="bg-[#832B03] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#A56F4F] transition-all duration-300 transform hover:scale-105" aria-label="Schedule a free consultation to discuss your data needs">
                     Schedule a Free Consultation
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title text-3xl font-bold mb-8">About Me</h2>
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="md:order-1">
-                    <p class="text-lg text-gray-600 mb-4">
-                        With over two decades of experience, I transform companies by leveraging data and technology to drive data strategy, AI initiatives, and digital transformation in complex organizations. My approach focuses on developing and executing strategies that are not just technically sound but are deeply aligned with organizational goals.
-                    </p>
-                    <p class="text-lg text-gray-600">
-                        I have a proven track record of building high-performing teams, mentoring leaders, and delivering multimillion-dollar business value through data-driven initiatives. My expertise spans cloud platforms, data governance, and emerging technologies, ensuring your business is ready for the future.
-                    </p>
-                </div>
-                <div class="md:order-2 p-8 bg-[#FCF6F0] rounded-lg shadow-xl text-center">
-                    <p class="text-xl italic text-[#33302C]">
-                        "Without data, you're just another person with an opinion."
-                    </p>
-                    <p class="text-lg font-semibold mt-2 text-gray-600">
-                        — Peter Drucker
-                    </p>
-                </div>
+                <a href="#casestudies" class="bg-transparent text-[#832B03] font-semibold py-3 px-8 rounded-full border border-[#832B03] hover:bg-[#832B03] hover:text-white transition-colors duration-300">
+                    See Our Results
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 md:py-24 bg-[#FCF6F0]">
+    <section id="services" class="py-16 md:py-24 bg-[#FCF6F0]" role="region" aria-label="Our services offered by Spry DP">
         <div class="container mx-auto px-6">
-            <h2 class="section-title text-3xl font-bold mb-12 text-center md:text-left">My Expertise & Services</h2>
+            <h2 class="section-title text-3xl font-bold mb-12 text-center md:text-left">Our Services</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1: Strategic Consulting -->
+                <article class="bg-white p-8 rounded-lg shadow-md card">
+                    <svg class="w-12 h-12 mb-4 text-[#832B03]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 009-9H3a9 9 0 009 9z" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2">Data & AI Strategy</h3>
+                    <p class="text-gray-600 mb-4">We help you define a clear, actionable roadmap to leverage your data, aligning technology investments with your business goals to ensure maximum ROI.</p>
+                </article>
 
-                <!-- Service 1: Strategic Leadership -->
-                <div class="bg-white p-8 rounded-lg shadow-md card">
-                    <div class="w-12 h-12 flex items-center justify-center bg-[#E5DCCF] text-[#832B03] rounded-full mb-4">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Strategic Leadership</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>Enterprise Data & AI Strategy Development</li>
-                        <li>Digital Transformation Roadmapping</li>
-                        <li>Change Management & Stakeholder Alignment</li>
-                        <li>Disaster Recovery & Business Continuity Planning</li>
-                    </ul>
-                </div>
+                <!-- Service 2: Platform Modernization -->
+                <article class="bg-white p-8 rounded-lg shadow-md card">
+                    <svg class="w-12 h-12 mb-4 text-[#832B03]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20.25l-2-2m2 2l2-2m-2 2v2m3-16l-2-2m2 2l2-2m-2 2v2m-3 16l-2-2m2 2l2-2m-2 2v2m3-16l-2-2m2 2l2-2m-2 2v2M12 6a4 4 0 110 8 4 4 0 010-8z" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2">Cloud & Data Platform Solutions</h3>
+                    <p class="text-gray-600 mb-4">Move beyond outdated systems. We design and implement modern, scalable cloud-based data platforms on Azure, AWS, and Google Cloud, built for efficiency and future growth.</p>
+                </article>
 
-                <!-- Service 2: Technical Excellence -->
-                <div class="bg-white p-8 rounded-lg shadow-md card">
-                    <div class="w-12 h-12 flex items-center justify-center bg-[#E5DCCF] text-[#832B03] rounded-full mb-4">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM6 9a1 1 0 112 0v2a1 1 0 11-2 0V9zm6-1a1 1 0 100 2h2a1 1 0 100-2h-2zm-2 7a1 1 0 112 0v1a1 1 0 11-2 0v-1z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Technical Excellence</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>Cloud Platforms (Azure, AWS, Google Cloud)</li>
-                        <li>Data Integration & ETL/ELT</li>
-                        <li>Machine Learning & AI Technologies</li>
-                        <li>Data Visualization (Power BI, Tableau)</li>
-                    </ul>
-                </div>
-
-                <!-- Service 3: Organizational Development -->
-                <div class="bg-white p-8 rounded-lg shadow-md card">
-                    <div class="w-12 h-12 flex items-center justify-center bg-[#E5DCCF] text-[#832B03] rounded-full mb-4">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.49 3.17c-.326-.35-.83-.34-1.144.02L8.5 6h-2A1.5 1.5 0 005 7.5v2A1.5 1.5 0 006.5 11H8l-.146.146a.5.5 0 00.708.708L9.5 11h2l1.146 1.146a.5.5 0 00.708-.708L12.5 11h2.5a.5.5 0 00.5-.5v-2a.5.5 0 00-.5-.5H13l.146-.146a.5.5 0 00-.708-.708L11.5 9h-2L8.354 7.854a.5.5 0 00.708-.708L10.5 7h.99V3.17z" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Organizational Development</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>Leadership & Talent Development</li>
-                        <li>Data Governance & Compliance Frameworks</li>
-                        <li>IT Service Management & Metrics</li>
-                        <li>Cross-functional Collaboration & Team Building</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Data Offerings Section -->
-    <section id="dataofferings" class="py-16 md:py-24 bg-[#FCF6F0]">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title text-3xl font-bold mb-12">Data Offerings</h2>
-            <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto text-center">
-                I build and deploy custom data products that transform complex data into actionable business assets, providing a direct path to innovation and revenue.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Data Offering 1 -->
-                <div class="bg-white rounded-lg shadow-md p-6 card">
-                    <h3 class="text-xl font-bold text-[#33302C] mb-2">AI-Powered Analytics Dashboards</h3>
-                    <p class="text-gray-600 mb-4">
-                        Transform your business operations with data-driven insights. I design and implement custom analytics platforms, like the Salesforce Einstein Analytics solution, to provide AI-powered insights and automation.
-                    </p>
-                    <a href="#" class="inline-block bg-[#E5DCCF] text-[#832B03] font-semibold text-sm px-4 py-2 rounded-full hover:bg-[#A56F4F] hover:text-white transition-colors">
-                        Learn More
-                    </a>
-                </div>
-
-                <!-- Data Offering 2 -->
-                <div class="bg-white rounded-lg shadow-md p-6 card">
-                    <h3 class="text-xl font-bold text-[#33302C] mb-2">Centralized Data Governance & Catalogs</h3>
-                    <p class="text-gray-600 mb-4">
-                        Gain full control and visibility over your enterprise data. I help organizations implement robust data governance frameworks and catalogs, ensuring regulatory compliance and data security.
-                    </p>
-                    <a href="#" class="inline-block bg-[#E5DCCF] text-[#832B03] font-semibold text-sm px-4 py-2 rounded-full hover:bg-[#A56F4F] hover:text-white transition-colors">
-                        Learn More
-                    </a>
-                </div>
-
-                <!-- Data Offering 3 -->
-                <div class="bg-white rounded-lg shadow-md p-6 card">
-                    <h3 class="text-xl font-bold text-[#33302C] mb-2">Unified Customer Data Platforms</h3>
-                    <p class="text-gray-600 mb-4">
-                        Break down data silos and create a single, unified view of your customers. I specialize in integrating disparate systems to build comprehensive customer data platforms that power personalized experiences and targeted campaigns.
-                    </p>
-                    <a href="#" class="inline-block bg-[#E5DCCF] text-[#832B03] font-semibold text-sm px-4 py-2 rounded-full hover:bg-[#A56F4F] hover:text-white transition-colors">
-                        Learn More
-                    </a>
-                </div>
+                <!-- Service 3: Operational Excellence -->
+                <article class="bg-white p-8 rounded-lg shadow-md card">
+                    <svg class="w-12 h-12 mb-4 text-[#832B03]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m-6 6h6m-4 2h4m2 2h4" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2">Data Governance & Analytics</h3>
+                    <p class="text-gray-600 mb-4">Ensure your data is trustworthy and secure. We establish robust governance frameworks and create powerful dashboards that turn raw data into actionable business intelligence.</p>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Case Studies Section -->
-    <section id="casestudies" class="py-16 md:py-24 bg-[#FCF6F0]">
+    <section id="casestudies" class="py-16 md:py-24 bg-white" role="region" aria-label="Spry DP client success stories">
         <div class="container mx-auto px-6">
             <h2 class="section-title text-3xl font-bold mb-12">Client Success Stories</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Case Study 1 -->
-                <div class="bg-white rounded-lg shadow-md p-6 card">
+                <article class="bg-[#FCF6F0] rounded-lg shadow-md p-6 card">
                     <h3 class="text-xl font-bold text-[#33302C] mb-2">Data Platform Modernization</h3>
-                    <p class="text-gray-600 mb-4">
-                        A major healthcare organization needed to move away from outdated, on-premise data systems. We architected and implemented a new cloud-based data platform, establishing the foundation for future AI and machine learning initiatives.
-                    </p>
+                    <p class="text-gray-600 mb-4">Architected and implemented a new cloud-based data platform for a major healthcare organization. This foundational work paved the way for future AI initiatives.</p>
                     <div class="bg-[#E5DCCF] text-[#832B03] font-semibold text-sm px-3 py-1 rounded-full inline-block">
                         Result: $2M+ in annual operational savings.
                     </div>
-                </div>
+                </article>
 
                 <!-- Case Study 2 -->
-                <div class="bg-white rounded-lg shadow-md p-6 card">
+                <article class="bg-[#FCF6F0] rounded-lg shadow-md p-6 card">
                     <h3 class="text-xl font-bold text-[#33302C] mb-2">Operational Efficiency Boost</h3>
-                    <p class="text-gray-600 mb-4">
-                        A company's data and analytics workflows were inefficient, impacting their bottom line. We led a full-scale transformation of their business intelligence and data warehouse, streamlining processes and providing clear, actionable insights.
-                    </p>
+                    <p class="text-gray-600 mb-4">Led a full-scale transformation of a company's data intelligence and warehouse, streamlining workflows and providing clear, actionable insights.</p>
                     <div class="bg-[#E5DCCF] text-[#832B03] font-semibold text-sm px-3 py-1 rounded-full inline-block">
                         Result: 20% improvement in operational efficiency.
                     </div>
-                </div>
+                </article>
 
                 <!-- Case Study 3 -->
-                <div class="bg-white rounded-lg shadow-md p-6 card">
+                <article class="bg-[#FCF6F0] rounded-lg shadow-md p-6 card">
                     <h3 class="text-xl font-bold text-[#33302C] mb-2">Cost Reduction & Reporting Optimization</h3>
-                    <p class="text-600 mb-4">
-                        A technology company's legacy database systems were slow and costly. We optimized their Oracle databases and designed a new data architecture, leading to faster reporting and significant cost savings.
-                    </p>
+                    <p class="text-gray-600 mb-4">Optimized legacy Oracle databases and designed a new data architecture for a technology company, leading to faster reporting and significant cost savings.</p>
                     <div class="bg-[#E5DCCF] text-[#832B03] font-semibold text-sm px-3 py-1 rounded-full inline-block">
                         Result: 50% increase in reporting efficiency and $1M in cost savings.
                     </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Spry DP / About Section -->
+    <section id="about" class="py-16 md:py-24 bg-[#FCF6F0]" role="region" aria-label="Why partner with Spry DP?">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-3xl font-bold mb-8 text-center md:text-left">Why Partner with Spry DP?</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 p-8 bg-white rounded-lg shadow-xl text-center">
+                    <p class="text-xl italic text-[#33302C]">
+                        "With over two decades of experience, I've seen firsthand how a strategic approach to data can transform a business. My focus is on delivering clear, measurable value, not just technology."
+                    </p>
+                    <p class="text-lg font-semibold mt-4 text-gray-600">
+                        — Zack Reeser
+                    </p>
+                </div>
+                <div class="md:order-2">
+                    <ul class="space-y-6 text-lg text-gray-600">
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#832B03] flex-shrink-0 mt-1">&#x2713;</span>
+                            <div>
+                                <h4 class="font-bold text-[#33302C]">Proven Expertise & Experience</h4>
+                                <p>Benefit from over 20 years of hands-on leadership in enterprise data and AI, with a track record of building high-performing teams and delivering multi-million dollar business value.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#832B03] flex-shrink-0 mt-1">&#x2713;</span>
+                            <div>
+                                <h4 class="font-bold text-[#33302C]">Focus on Measurable ROI</h4>
+                                <p>We don't just implement technology; we develop strategies that directly impact your bottom line. Our case studies prove our ability to drive significant savings and efficiency gains.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#832B03] flex-shrink-0 mt-1">&#x2713;</span>
+                            <div>
+                                <h4 class="font-bold text-[#33302C]">Holistic, Scalable Solutions</h4>
+                                <p>From data governance to cloud architecture, we build resilient, future-proof systems. Our solutions are designed to scale with your business, ensuring long-term success.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-16 md:py-24 bg-white">
+    <!-- How We Work Section -->
+    <section id="process" class="py-16 md:py-24 bg-white" role="region" aria-label="Spry DP's 3 step process">
         <div class="container mx-auto px-6">
-            <h2 class="section-title text-3xl font-bold mb-12">Professional Experience</h2>
-            <div class="space-y-12">
-                <!-- Delta Dental of Colorado -->
-                <div class="flex flex-col md:flex-row bg-[#FCF6F0] rounded-lg shadow-md p-6 card">
-                    <div class="md:w-1/3 flex-shrink-0 mb-4 md:mb-0">
-                        <h3 class="text-xl font-bold text-[#33302C]">Delta Dental of Colorado</h3>
-                        <p class="text-gray-500">2021 - 2025</p>
-                        <h4 class="text-lg font-semibold text-gray-700 mt-2">Data Systems Manager & Data Governance Leader</h4>
-                    </div>
-                    <div class="md:w-2/3 md:pl-12">
-                        <p class="text-gray-600 font-semibold mb-2">Data Strategy & Governance Leadership</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Initiated and directed comprehensive enterprise data governance program, establishing frameworks, standards, and best practices that transformed organizational data culture.</li>
-                            <li>Designed and implemented data quality management processes, metadata management systems, and data lineage tracking using Microsoft Purview.</li>
-                            <li>Established data governance steering committees with C-suite executives across Finance, Operations, Sales, and HR, ensuring alignment with strategic business objectives.</li>
-                            <li>Developed and enforced data policies and procedures ensuring compliance with data privacy regulations and industry standards.</li>
-                        </ul>
-                        <p class="text-gray-600 font-semibold mt-4 mb-2">Team Leadership & Talent Development</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Built and led high-performing data team of 6 professionals, achieving $2M annual savings vs. external consultants.</li>
-                            <li>Mentored team in industry-leading practices for data warehousing, management, and integration, establishing centers of excellence.</li>
-                            <li>Fostered a culture of innovation and continuous learning, implementing iterative development methodologies that improved delivery efficiency.</li>
-                        </ul>
-                        <p class="text-gray-600 font-semibold mt-4 mb-2">Data Infrastructure & Architecture</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Led enterprise-wide data platform modernization, migrating from legacy SSRS/OBIEE to Power BI, enhancing analytics capabilities.</li>
-                            <li>Architected scalable data warehouse solutions supporting real-time analytics and business intelligence across the organization.</li>
-                            <li>Implemented cloud-based data catalog with Microsoft Purview, ensuring efficient data discovery and management at scale.</li>
-                        </ul>
-                        <p class="text-gray-600 font-semibold mt-4 mb-2">Business Impact & Analytics Excellence</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Developed executive-level dashboards and KPIs providing critical insights for strategic decision-making and long-range planning.</li>
-                            <li>Partnered with business units to identify data opportunities, delivering analytics solutions that drove operational efficiency and revenue growth.</li>
-                        </ul>
-                    </div>
+            <h2 class="section-title text-3xl font-bold mb-12 text-center">How We Work: Our 3-Step Process</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-[#E5DCCF] rounded-full text-[#832B03] font-bold text-3xl">1</div>
+                    <h3 class="text-xl font-bold mb-2">Assess & Strategize</h3>
+                    <p class="text-gray-600">We begin with a thorough assessment of your current data landscape, business goals, and challenges to develop a tailored, data-driven strategy.</p>
                 </div>
-                
-                <!-- Custom Made Meals -->
-                <div class="flex flex-col md:flex-row bg-[#FCF6F0] rounded-lg shadow-md p-6 card">
-                    <div class="md:w-1/3 flex-shrink-0 mb-4 md:mb-0">
-                        <h3 class="text-xl font-bold text-[#33302C]">Custom Made Meals</h3>
-                        <p class="text-gray-500">2019 - 2021</p>
-                        <h4 class="text-lg font-semibold text-gray-700 mt-2">IT Data Manager & Analytics Leader</h4>
-                    </div>
-                    <div class="md:w-2/3 md:pl-12">
-                        <p class="text-gray-600 font-semibold mb-2">Data-Driven Business Transformation</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Architected BI and data warehouse solutions using Power BI and Tableau, improving manufacturing operations efficiency by 20%.</li>
-                            <li>Led advanced analytics initiative uncovering product profitability insights, resulting in portfolio optimization and 8% reduction in unprofitable SKUs.</li>
-                            <li>Established data-driven decision frameworks that identified ERP system inefficiencies, generating significant cost savings.</li>
-                        </ul>
-                        <p class="text-gray-600 font-semibold mt-4 mb-2">Data Governance & Process Excellence</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Implemented data quality frameworks and reporting documentation processes ensuring data integrity across systems.</li>
-                            <li>Designed business process frameworks for data initiative prioritization and resource allocation.</li>
-                            <li>Automated data workflows using SharePoint, streamlining finance and IT operations.</li>
-                        </ul>
-                    </div>
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-[#E5DCCF] rounded-full text-[#832B03] font-bold text-3xl">2</div>
+                    <h3 class="text-xl font-bold mb-2">Build & Implement</h3>
+                    <p class="text-gray-600">Our team builds and implements your data solutions, from modernizing your data platform to establishing robust data governance frameworks.</p>
                 </div>
-
-                <!-- Sapiens -->
-                <div class="flex flex-col md:flex-row bg-[#FCF6F0] rounded-lg shadow-md p-6 card">
-                    <div class="md:w-1/3 flex-shrink-0 mb-4 md:mb-0">
-                        <h3 class="text-xl font-bold text-[#33302C]">Sapiens</h3>
-                        <p class="text-gray-500">2019</p>
-                        <h4 class="text-lg font-semibold text-gray-700 mt-2">Senior BI Developer & Data Solutions Architect</h4>
-                    </div>
-                    <div class="md:w-2/3 md:pl-12">
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Led Pentaho ETL and BI solution development, improving data processing efficiency by 300x through optimized design.</li>
-                            <li>Configured and optimized AWS cloud infrastructure for data warehousing and analytics workloads.</li>
-                            <li>Established data pipeline best practices ensuring scalability and reliability.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Cognizant -->
-                <div class="flex flex-col md:flex-row bg-[#FCF6F0] rounded-lg shadow-md p-6 card">
-                    <div class="md:w-1/3 flex-shrink-0 mb-4 md:mb-0">
-                        <h3 class="text-xl font-bold text-[#33302C]">Cognizant</h3>
-                        <p class="text-gray-500">2016 - 2019</p>
-                        <h4 class="text-lg font-semibold text-gray-700 mt-2">Senior Software Engineer & Analytics Team Lead</h4>
-                    </div>
-                    <div class="md:w-2/3 md:pl-12">
-                        <p class="text-gray-600 font-semibold mb-2">Team Leadership & Delivery</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Managed 5-member offshore analytics team developing Salesforce Einstein Analytics solutions.</li>
-                            <li>Established development standards and best practices for data integration and visualization.</li>
-                            <li>Collaborated with finance team on Oracle Hyperion implementation for enterprise financial reporting.</li>
-                        </ul>
-                        <p class="text-gray-600 font-semibold mt-4 mb-2">Data Platform Integration</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Led enterprise data integration initiatives connecting disparate systems for unified analytics.</li>
-                            <li>Trained business users in self-service analytics tools, democratizing data access.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Trizetto Group -->
-                <div class="flex flex-col md:flex-row bg-[#FCF6F0] rounded-lg shadow-md p-6 card">
-                    <div class="md:w-1/3 flex-shrink-0 mb-4 md:mb-0">
-                        <h3 class="text-xl font-bold text-[#33302C]">Trizetto Group</h3>
-                        <p class="text-gray-500">2011 - 2016</p>
-                        <h4 class="text-lg font-semibold text-gray-700 mt-2">Senior Software Engineer & Data Platform Lead</h4>
-                    </div>
-                    <div class="md:w-2/3 md:pl-12">
-                        <p class="text-gray-600 font-semibold mb-2">Data Infrastructure & Integration</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Led Pentaho ETL platform implementation and subsequent upgrades, establishing enterprise data integration standards.</li>
-                            <li>Optimized Oracle database performance and data models, increasing reporting efficiency by 50%.</li>
-                            <li>Designed data architecture supporting $1M cost savings through optimized reporting practices.</li>
-                            <li>Integrated Salesforce with enterprise data ecosystem, creating a unified customer data platform.</li>
-                        </ul>
-                        <p class="text-gray-600 font-semibold mt-4 mb-2">Analytics & Insights Delivery</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Partnered with finance team to transform unstructured data into actionable business intelligence.</li>
-                            <li>Established automated reporting frameworks for regulatory compliance and business performance monitoring.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- StarTek Communications -->
-                <div class="flex flex-col md:flex-row bg-[#FCF6F0] rounded-lg shadow-md p-6 card">
-                    <div class="md:w-1/3 flex-shrink-0 mb-4 md:mb-0">
-                        <h3 class="text-xl font-bold text-[#33302C]">StarTek Communications</h3>
-                        <p class="text-gray-500">2009 - 2011</p>
-                        <h4 class="text-lg font-semibold text-gray-700 mt-2">Business Intelligence Developer</h4>
-                    </div>
-                    <div class="md:w-2/3 md:pl-12">
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Established data quality assurance processes reducing errors from 30% to 10%.</li>
-                            <li>Developed automated reporting pipelines for daily, weekly, and monthly business metrics.</li>
-                            <li>Created standardized data models improving report development efficiency.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Echostar Communications (Dish Network) -->
-                <div class="flex flex-col md:flex-row bg-[#FCF6F0] rounded-lg shadow-md p-6 card">
-                    <div class="md:w-1/3 flex-shrink-0 mb-4 md:mb-0">
-                        <h3 class="text-xl font-bold text-[#33302C]">Echostar Communications (Dish Network)</h3>
-                        <p class="text-gray-500">2004 - 2009</p>
-                        <h4 class="text-lg font-semibold text-gray-700 mt-2">Business Analyst & BI Developer</h4>
-                    </div>
-                    <div class="md:w-2/3 md:pl-12">
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Analyzed business processes and sales data, reducing reporting time by 80% through optimization.</li>
-                            <li>Trained in Microsoft BI full stack (SSRS/SSAS/SSIS), establishing foundation for data career.</li>
-                            <li>Collaborated with external partners on B2B data integration initiatives.</li>
-                        </ul>
-                    </div>
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-[#E5DCCF] rounded-full text-[#832B03] font-bold text-3xl">3</div>
+                    <h3 class="text-xl font-bold mb-2">Optimize & Empower</h3>
+                    <p class="text-gray-600">We empower your team with the tools and knowledge to leverage your new data capabilities, ensuring long-term success and continuous value generation.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet CTA Section -->
+    <section class="py-16 bg-[#33302C] text-white text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-4 text-white">Get Your Free Data Strategy Checklist</h2>
+            <p class="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
+                Discover the 10 critical steps to a successful data strategy. Download our free guide to get started.
+            </p>
+            <a href="#" class="bg-[#A56F4F] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#832B03] transition-colors duration-300">
+                Download Now
+            </a>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-24 bg-[#33302C] text-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="section-title text-3xl font-bold mb-4">Let's Connect</h2>
-            <p class="text-lg text-gray-300 mb-4 max-w-2xl mx-auto">
-                Ready to transform your business with a robust data and AI strategy?
-                Let's discuss how I can help you achieve your goals. My consulting rate is $150/hr.
+    <section id="contact" class="py-16 md:py-24 bg-white text-center" role="region" aria-label="Contact Spry DP">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-3xl font-bold mb-4">Ready to Transform Your Business?</h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Let's discuss how a smart data strategy can drive efficiency and growth for your company. Schedule a free consultation to get started.
             </p>
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="https://calendar.app.google/GC75d2DHsLeAnLWd7" target="_blank" class="bg-[#832B03] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#A56F4F] transition-colors duration-300">
-                    Schedule a Meeting
+                <a href="https://calendar.app.google/GC75d2DHsLeAnLWd7" target="_blank" class="bg-[#832B03] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#A56F4F] transition-colors duration-300" aria-label="Schedule a free consultation">
+                    Schedule a Free Consultation
                 </a>
-                <a href="https://linkedin.com/in/zack-reeser" target="_blank" class="bg-[#A56F4F] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#832B03] transition-colors duration-300">
-                    Connect on LinkedIn
+                <a href="mailto:info@sprydp.com" class="bg-[#A56F4F] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#832B03] transition-colors duration-300" aria-label="Send an email to Spry DP">
+                    Send Us an Email
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#1C1A17] text-gray-400 py-6">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2024 Spry DP. All Rights Reserved.</p>
+    <footer class="bg-[#1C1A17] text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <!-- Spry DP Info -->
+                <div class="space-y-4">
+                    <div class="text-lg font-bold text-white">Spry DP</div>
+                    <p class="text-sm">Driving business value with data and AI.</p>
+                    <div class="flex items-center justify-center md:justify-start space-x-2 text-sm">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@sprydp.com" class="hover:text-white transition-colors">info@sprydp.com</a>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start space-x-2 text-sm">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+1-555-555-5555</span>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <div class="text-lg font-bold text-white">Quick Links</div>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#casestudies" class="hover:text-white transition-colors">Case Studies</a></li>
+                        <li><a href="#process" class="hover:text-white transition-colors">How We Work</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">Why Spry DP</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media -->
+                <div class="space-y-4">
+                    <div class="text-lg font-bold text-white">Connect</div>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="https://www.linkedin.com/company/sprydp" target="_blank" aria-label="LinkedIn" class="hover:text-white transition-colors"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <!-- Add other social links here as needed -->
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-gray-700 text-center text-sm">
+                <p>&copy; 2024 Spry DP. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+    <!-- Floating CTA Button -->
+    <a href="https://calendar.app.google/GC75d2DHsLeAnLWd7" target="_blank" class="floating-cta bg-[#832B03] text-white font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-[#A56F4F] transition-colors duration-300">
+        Book a Call
+    </a>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
             mobileMenuButton.addEventListener('click', () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
                 mobileMenu.classList.toggle('hidden');
             });
             
-            // Close mobile menu when a link is clicked
             mobileMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
                 });
             });
         });
