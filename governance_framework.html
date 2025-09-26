@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Governance Framework</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1in;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        .header {
+            border-bottom: 3px solid #2c5aa0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 5px;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        h1 {
+            color: #2c5aa0;
+            font-size: 28px;
+            margin-bottom: 10px;
+            border-left: 4px solid #2c5aa0;
+            padding-left: 15px;
+        }
+        
+        h2 {
+            color: #2c5aa0;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+        
+        h3 {
+            color: #444;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .pillar {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #2c5aa0;
+        }
+        
+        .pillar h4 {
+            margin-top: 0;
+            color: #2c5aa0;
+            font-size: 18px;
+        }
+        
+        .governance-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .governance-matrix th,
+        .governance-matrix td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        .governance-matrix th {
+            background-color: #2c5aa0;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .governance-matrix tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .risk-level {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 3px;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .risk-high { background-color: #dc3545; }
+        .risk-medium { background-color: #ffc107; color: #333; }
+        .risk-low { background-color: #28a745; }
+        
+        .policy-box {
+            background: #e8f4fd;
+            border-left: 4px solid #0066cc;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .policy-box h4 {
+            margin-top: 0;
+            color: #0066cc;
+        }
+        
+        .checklist {
+            background: #f0f8f0;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .checklist h4 {
+            margin-top: 0;
+            color: #28a745;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f4f8;
+            border-radius: 5px;
+        }
+        
+        .role-definition {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .role-card {
+            flex: 1;
+            min-width: 250px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .role-card h4 {
+            margin-top: 0;
+            color: #2c5aa0;
+        }
+        
+        @media print {
+            .no-print { display: none; }
+            .role-definition { flex-direction: column; }
+            .role-card { min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="company-name">Spry Data Partners</div>
+        <div class="tagline">Practical AI & Data Strategy Implementation</div>
+    </div>
+
+    <h1>AI Governance Framework</h1>
+    
+    <p><strong>Purpose:</strong> Establish comprehensive governance that enables AI innovation while managing risks, ensuring compliance, and maintaining stakeholder trust.</p>
+
+    <h2>Governance Framework Overview</h2>
+
+    <p>Effective AI governance balances innovation with risk management, providing clear guidelines that enable teams to move fast while maintaining safety and compliance. This framework is designed to scale with your AI maturity.</p>
+
+    <h2>Core Governance Pillars</h2>
+
+    <div class="pillar">
+        <h4>1. Ethical AI & Responsible Development</h4>
+        <ul>
+            <li>Bias detection and mitigation strategies</li>
+            <li>Fairness and transparency requirements</li>
+            <li>Explainability and interpretability standards</li>
+            <li>Human oversight and intervention capabilities</li>
+            <li>Ethical review processes for AI applications</li>
+        </ul>
+    </div>
+
+    <div class="pillar">
+        <h4>2. Risk Management & Compliance</h4>
+        <ul>
+            <li>AI risk assessment and classification frameworks</li>
+            <li>Regulatory compliance monitoring (GDPR, CCPA, industry-specific)</li>
+            <li>Model validation and testing protocols</li>
+            <li>Incident response and remediation procedures</li>
+            <li>Audit trails and documentation requirements</li>
+        </ul>
+    </div>
+
+    <div class="pillar">
+        <h4>3. Data Privacy & Security</h4>
+        <ul>
+            <li>Data classification and handling protocols</li>
+            <li>Privacy-preserving AI techniques</li>
+            <li>Access controls and data minimization</li>
+            <li>Encryption and secure model deployment</li>
+            <li>Third-party data sharing agreements</li>
+        </ul>
+    </div>
+
+    <div class="pillar">
+        <h4>4. Model Lifecycle Management</h4>
+        <ul>
+            <li>Model development and approval workflows</li>
+            <li>Performance monitoring and drift detection</li>
+            <li>Version control and rollback procedures</li>
+            <li>Retirement and decommissioning processes</li>
+            <li>Impact assessment and change management</li>
+        </ul>
+    </div>
+
+    <h2>AI Risk Classification Matrix</h2>
+
+    <table class="governance-matrix">
+        <thead>
+            <tr>
+                <th>Use Case Category</th>
+                <th>Risk Level</th>
+                <th>Approval Required</th>
+                <th>Monitoring Frequency</th>
+                <th>Review Process</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Internal Analytics & Reporting</td>
+                <td><span class="risk-level risk-low">LOW</span></td>
+                <td>Manager</td>
+                <td>Quarterly</td>
+                <td>Automated monitoring</td>
+            </tr>
+            <tr>
+                <td>Customer-Facing Recommendations</td>
+                <td><span class="risk-level risk-medium">MEDIUM</span></td>
+                <td>AI Review Board</td>
+                <td>Monthly</td>
+                <td>Bias testing + human review</td>
+            </tr>
+            <tr>
+                <td>Financial Decision Making</td>
+                <td><span class="risk-level risk-high">HIGH</span></td>
+                <td>Executive + Legal</td>
+                <td>Weekly</td>
+                <td>Full compliance audit</td>
+            </tr>
+            <tr>
+                <td>Healthcare/Safety Applications</td>
+                <td><span class="risk-level risk-high">HIGH</span></td>
+                <td>Board + Regulatory</td>
+                <td>Continuous</td>
+                <td>Clinical validation required</td>
+            </tr>
+            <tr>
+                <td>HR/Hiring Decisions</td>
+                <td><span class="risk-level risk-high">HIGH</span></td>
+                <td>Legal + HR Leadership</td>
+                <td>Weekly</td>
+                <td>Bias audit + legal review</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Governance Roles & Responsibilities</h2>
+
+    <div class="role-definition">
+        <div class="role-card">
+            <h4>AI Governance Board</h4>
+            <ul>
+                <li>Strategic AI policy decisions</li>
+                <li>High-risk project approvals</li>
+                <li>Resource allocation</li>
+                <li>Cross-functional coordination</li>
+            </ul>
+        </div>
+        
+        <div class="role-card">
+            <h4>Chief AI Officer / Data Officer</h4>
+            <ul>
+                <li>Day-to-day governance oversight</li>
+                <li>Policy implementation</li>
+                <li>Team coordination</li>
+                <li>Stakeholder communication</li>
+            </ul>
+        </div>
+        
+        <div class="role-card">
+            <h4>AI Ethics Officer</h4>
+            <ul>
+                <li>Ethical review processes</li>
+                <li>Bias assessment coordination</li>
+                <li>Stakeholder advocacy</li>
+                <li>Training and awareness</li>
+            </ul>
+        </div>
+        
+        <div class="role-card">
+            <h4>Data Stewards</h4>
+            <ul>
+                <li>Data quality monitoring</li>
+                <li>Access control management</li>
+                <li>Lineage documentation</li>
+                <li>Compliance verification</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Key Governance Policies</h2>
+
+    <div class="policy-box">
+        <h4>AI Development Standards</h4>
+        <ul>
+            <li><strong>Documentation Requirements:</strong> All models must include purpose, data sources, limitations, and performance metrics</li>
+            <li><strong>Testing Protocols:</strong> Mandatory bias, fairness, and robustness testing before deployment</li>
+            <li><strong>Version Control:</strong> All model artifacts, data, and code must be versioned and reproducible</li>
+            <li><strong>Explainability:</strong> High-risk models require interpretability and explanation capabilities</li>
+        </ul>
+    </div>
+
+    <div class="policy-box">
+        <h4>Data Usage & Privacy</h4>
+        <ul>
+            <li><strong>Data Minimization:</strong> Use only necessary data for specific AI purposes</li>
+            <li><strong>Consent Management:</strong> Ensure proper consent for AI use of personal data</li>
+            <li><strong>Anonymization:</strong> Apply appropriate privacy-preserving techniques</li>
+            <li><strong>Cross-Border Transfers:</strong> Comply with data residency and transfer regulations</li>
+        </ul>
+    </div>
+
+    <div class="policy-box">
+        <h4>Third-Party AI Services</h4>
+        <ul>
+            <li><strong>Vendor Assessment:</strong> Evaluate AI service providers for governance alignment</li>
+            <li><strong>Contract Requirements:</strong> Include AI-specific terms and liability clauses</li>
+            <li><strong>Performance Monitoring:</strong> Regular assessment of third-party AI performance</li>
+            <li><strong>Exit Strategies:</strong> Plan for service discontinuation or provider changes</li>
+        </ul>
+    </div>
+
+    <h2>Implementation Checklist</h2>
+
+    <div class="checklist">
+        <h4>Phase 1: Foundation (Months 1-2)</h4>
+        <ul>
+            <li>□ Establish AI Governance Board and assign roles</li>
+            <li>□ Define AI risk classification framework</li>
+            <li>□ Create basic AI development standards</li>
+            <li>□ Implement model documentation templates</li>
+            <li>□ Set up basic monitoring infrastructure</li>
+        </ul>
+    </div>
+
+    <div class="checklist">
+        <h4>Phase 2: Policy Development (Months 3-4)</h4>
+        <ul>
+            <li>□ Develop comprehensive AI policies and procedures</li>
+            <li>□ Create approval workflows for different risk levels</li>
+            <li>□ Establish bias testing and fairness protocols</li>
+            <li>□ Implement privacy and security controls</li>
+            <li>□ Design incident response procedures</li>
+        </ul>
+    </div>
+
+    <div class="checklist">
+        <h4>Phase 3: Operationalization (Months 5-6)</h4>
+        <ul>
+            <li>□ Deploy automated monitoring and alerting</li>
+            <li>□ Train teams on governance requirements</li>
+            <li>□ Conduct initial governance audits</li>
+            <li>□ Establish regular review cycles</li>
+            <li>□ Create stakeholder communication processes</li>
+        </ul>
+    </div>
+
+    <div class="checklist">
+        <h4>Phase 4: Continuous Improvement (Ongoing)</h4>
+        <ul>
+            <li>□ Regular policy reviews and updates</li>
+            <li>□ Governance maturity assessments</li>
+            <li>□ Stakeholder feedback incorporation</li>
+            <li>□ Industry best practice adoption</li>
+            <li>□ Regulatory change management</li>
+        </ul>
+    </div>
+
+    <h2>Monitoring & Measurement</h2>
+
+    <h3>Key Governance Metrics</h3>
+    <ul>
+        <li><strong>Compliance Rate:</strong> Percentage of AI projects following governance processes</li>
+        <li><strong>Time to Approval:</strong> Average time for AI project approvals</li>
+        <li><strong>Risk Incidents:</strong> Number and severity of AI-related incidents</li>
+        <li><strong>Model Performance:</strong> Ongoing accuracy and fairness metrics</li>
+        <li><strong>Stakeholder Satisfaction:</strong> Internal and external stakeholder feedback</li>
+    </ul>
+
+    <h3>Reporting Framework</h3>
+    <ul>
+        <li><strong>Weekly:</strong> Operational metrics and incident reports</li>
+        <li><strong>Monthly:</strong> Model performance and compliance dashboards</li>
+        <li><strong>Quarterly:</strong> Governance effectiveness assessment</li>
+        <li><strong>Annually:</strong> Comprehensive governance review and strategy update</li>
+    </ul>
+
+    <div class="contact-info">
+        <h3>Ready to Implement AI Governance?</h3>
+        <p>Spry Data Partners helps organizations build practical, scalable AI governance frameworks that enable innovation while managing risk. Our approach balances regulatory requirements with business agility.</p>
+        
+        <p><strong>Let's discuss your governance needs:</strong></p>
+        <p>Email: info@sprydp.com | Website: sprydp.com</p>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Spry Data Partners. All rights reserved.</p>
+        <p>This document is proprietary and confidential. Distribution limited to authorized recipients.</p>
+    </div>
+
+    <script>
+        function printPDF() {
+            window.print();
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.createElement('button');
+            button.textContent = 'Download PDF';
+            button.className = 'no-print';
+            button.style.cssText = 'position: fixed; top: 20px; right: 20px; padding: 10px 20px; background: #2c5aa0; color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 1000;';
+            button.onclick = printPDF;
+            document.body.appendChild(button);
+        });
+    </script>
+</body>
+</html>
