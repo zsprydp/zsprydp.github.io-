@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spry Data Partners - Data Strategy & Automation Consulting</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Spry Data Partners - Data Intelligence for Healthcare & Dental Practices</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,30 +12,48 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #832B03;
+            --primary-light: #A56F4F;
+            --primary-dark: #5C1E02;
+            --cream: #FCF6F0;
+            --cream-dark: #F5EFE6;
+            --sand: #E5DCCF;
+            --charcoal: #33302C;
+            --gray: #6b7280;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #F5EFE6;
-            color: #33302C;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--cream-dark);
+            color: var(--charcoal);
             line-height: 1.6;
         }
 
+        h1, h2, h3, .hero h1 {
+            font-family: 'Fraunces', Georgia, serif;
+        }
+
         .container {
-            max-width: 1200px;
+            max-width: 1140px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
 
-        /* Navigation */
         header {
-            background-color: #FCF6F0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background-color: var(--cream);
+            box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
-            z-index: 50;
+            z-index: 100;
         }
 
         nav {
@@ -43,397 +61,545 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 1.5rem;
+            max-width: 1140px;
+            margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: #33302C;
+            color: var(--charcoal);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.6rem;
+        }
+
+        .logo svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-name {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .logo-tagline {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--gray);
+            line-height: 1.2;
         }
 
         nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
+            align-items: center;
         }
 
         nav a {
             text-decoration: none;
-            color: #6b7280;
+            color: var(--gray);
             font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
 
         nav a:hover {
-            color: #832B03;
+            color: var(--primary);
         }
 
         .nav-cta {
-            background: #832B03;
-            color: white !important;
-            padding: 0.6rem 1.2rem;
-            border-radius: 9999px;
-            font-size: 0.9rem;
+            background: var(--primary);
+            color: var(--white) !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 600;
         }
 
         .nav-cta:hover {
-            background: #A56F4F;
+            background: var(--primary-light);
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(to right, #F5EFE6, #E5DCCF);
-            color: #33302C;
-            padding: 6rem 0;
-            text-align: center;
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
-        .hero-content {
-            max-width: 700px;
-            margin: 0 auto;
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+            color: var(--charcoal);
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-            font-weight: 800;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            color: #6b7280;
-            font-weight: 400;
-            line-height: 1.5;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Buttons */
         .btn {
             display: inline-block;
-            padding: 0.75rem 2rem;
-            border-radius: 9999px;
+            padding: 0.875rem 1.75rem;
+            border-radius: 6px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             border: none;
             cursor: pointer;
             font-size: 1rem;
         }
 
         .btn-primary {
-            background-color: #832B03;
-            color: white;
+            background-color: var(--primary);
+            color: var(--white);
         }
 
         .btn-primary:hover {
-            background-color: #A56F4F;
-            transform: scale(1.05);
+            background-color: var(--primary-light);
+            transform: translateY(-1px);
         }
 
         .btn-secondary {
             background-color: transparent;
-            color: #832B03;
-            border: 2px solid #832B03;
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
 
         .btn-secondary:hover {
-            background-color: #832B03;
-            color: white;
+            background-color: var(--primary);
+            color: var(--white);
         }
 
-        /* Section Styles */
+        .cta-microcopy {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+            font-weight: 400;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
+            padding: 5rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(131,43,3,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-location {
+            font-size: 0.95rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero-proof {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-proof-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+        }
+
+        .hero-proof-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--primary);
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
         section {
             padding: 5rem 0;
         }
 
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #33302C;
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1rem;
+        .section-header {
             text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 4rem;
-            height: 4px;
-            background-color: #832B03;
-            border-radius: 9999px;
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
-        .section-title.center::after {
-            left: 50%;
-            transform: translateX(-50%);
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--gray);
+            line-height: 1.7;
         }
 
-        /* Services Section */
+        .problem-section {
+            background: var(--white);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .problem-content h2 {
+            font-size: 2.25rem;
+            color: var(--charcoal);
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        .problem-content p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .problem-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .problem-stat {
+            background: var(--cream);
+            padding: 1.75rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .problem-stat-number {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-stat-label {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
         .services {
-            background: #FCF6F0;
+            background: var(--cream-dark);
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 3rem;
+        }
+
+        /* Flip Card Styles */
+        .service-card-container {
+            perspective: 1000px;
+            height: 400px;
         }
 
         .service-card {
-            background: white;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .service-card-container:hover .service-card {
+            transform: rotateY(180deg);
+        }
+
+        .service-card-front,
+        .service-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card-front {
+            background: var(--white);
             padding: 2rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            border: 1px solid var(--sand);
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        .service-card-back {
+            background: var(--charcoal);
+            transform: rotateY(180deg);
+            padding: 1.5rem;
+            overflow: hidden;
         }
 
-        .service-card h3 {
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--cream);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon svg {
+            width: 30px;
+            height: 30px;
+            color: var(--primary);
+        }
+
+        .service-card-front h3 {
             font-size: 1.25rem;
+            color: var(--charcoal);
+            margin-bottom: 0.875rem;
             font-weight: 700;
-            color: #33302C;
-            margin-bottom: 0.5rem;
+            line-height: 1.3;
         }
 
-        .service-card p {
-            color: #6b7280;
+        .service-card-front p {
+            color: var(--gray);
             font-size: 0.95rem;
             line-height: 1.6;
-            margin-bottom: 1rem;
+            flex-grow: 1;
         }
 
-        .service-tech {
-            font-size: 0.85rem;
-            color: #832B03;
+        .dashboard-preview {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-preview-header {
+            color: var(--white);
+            font-size: 0.9rem;
             font-weight: 600;
-        }
-
-        /* Expertise / Tech Stack */
-        .expertise {
-            background: white;
-        }
-
-        .tech-stack {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .tech-item {
-            background: #F0EBE3;
-            padding: 1.2rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            font-weight: 500;
-            color: #832B03;
-            border: 1px solid #E5DCCF;
-            transition: all 0.3s;
-        }
-
-        .tech-item:hover {
-            background: #E5DCCF;
-            border-color: #832B03;
-        }
-
-        /* Credentials */
-        .credentials {
-            background: #FCF6F0;
-        }
-
-        .cred-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .cred-item {
-            text-align: center;
-            padding: 1.5rem;
-        }
-
-        .cred-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #832B03;
-        }
-
-        .cred-label {
-            color: #6b7280;
-            font-size: 0.95rem;
-            margin-top: 0.5rem;
-        }
-
-        .cred-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            margin-top: 2rem;
-            text-align: left;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .cred-info h3 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: #33302C;
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
-        .cred-info p {
-            color: #6b7280;
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-        }
-
-        .cred-info strong {
-            color: #33302C;
-            font-weight: 600;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(to right, #F5EFE6, #E5DCCF);
-            color: #33302C;
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        .cta-section h2 {
-            color: #33302C;
             margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
         }
 
-        .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            color: #6b7280;
+        .dashboard-preview-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
-        /* Footer */
-        footer {
-            background: #1C1A17;
-            color: #9ca3af;
-            padding: 3rem 0;
-        }
-
-        .footer-content {
+        .metric-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
+            gap: 0.5rem;
         }
 
-        .footer-section h4 {
-            color: white;
+        .metric-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 0.75rem;
+        }
+
+        .metric-label {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-value {
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            color: var(--white);
         }
 
-        .footer-section a {
-            color: #9ca3af;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .metric-change {
+            font-size: 0.65rem;
+            margin-top: 0.25rem;
         }
 
-        .footer-section a:hover {
-            color: white;
+        .metric-change.positive {
+            color: #86efac;
         }
 
-        .footer-bottom {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #374151;
+        .metric-change.negative {
+            color: #fca5a5;
+        }
+
+        .chart-placeholder {
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            padding: 0.75rem;
+            flex-grow: 1;
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary) 100%);
+            border-radius: 3px 3px 0 0;
+            min-height: 20px;
+        }
+
+        .insight-preview {
+            background: rgba(131,43,3,0.2);
+            border-left: 3px solid var(--primary-light);
+            border-radius: 4px;
+            padding: 0.75rem;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.4;
+        }
+
+        .dashboard-preview-footer {
+            margin-top: auto;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
             text-align: center;
-            font-size: 0.875rem;
         }
 
-        /* Icon styles */
-        svg {
-            width: 3rem;
-            height: 3rem;
-            color: #832B03;
-            margin-bottom: 1rem;
+        .view-details {
+            color: var(--primary-light);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
         }
 
-        /* Responsive */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+        }
+
         @media (max-width: 768px) {
             nav ul {
                 display: none;
             }
 
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 3rem 0 4rem;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.25rem;
             }
 
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 1.05rem;
+            }
+
+            .hero-proof {
+                flex-direction: column;
+                gap: 0.75rem;
             }
 
             .hero-cta-group {
                 flex-direction: column;
             }
 
+            .hero-cta-group .btn {
+                width: 100%;
+                text-align: center;
+            }
+
             section {
-                padding: 3rem 1.5rem;
+                padding: 3.5rem 0;
             }
 
-            .section-title {
-                font-size: 1.8rem;
+            .section-header h2 {
+                font-size: 1.75rem;
             }
 
-            .services-grid,
-            .tech-stack {
+            .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            .footer-content {
+            .problem-stats {
                 grid-template-columns: 1fr;
-                text-align: left;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .footer-content {
-                text-align: left;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <header>
-        <nav class="container">
+        <nav>
             <a href="#" class="logo">
-                <svg width="36" height="36" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="peakGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style="stop-color:#832B03;stop-opacity:1" />
@@ -445,188 +611,1008 @@
                     <polygon points="200,120 170,220 230,220" fill="#FCF6F0"/>
                     <polygon points="200,80 195,100 205,100" fill="#FCF6F0"/>
                 </svg>
-                <span>Spry DP</span>
+                <div class="logo-text">
+                    <span class="logo-name">Spry Data Partners</span>
+                    <span class="logo-tagline">For Independent Dental & Healthcare Practices</span>
+                </div>
             </a>
             <ul>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#credentials">Why Choose Us</a></li>
-                <li><a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" class="nav-cta">Schedule Call</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" class="nav-cta">Get Free Assessment</a></li>
             </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Data Automation & Strategy for Growing Businesses</h1>
+                <h1>Turn Your Practice Data Into <span>Growth Decisions</span></h1>
                 <p class="hero-subtitle">
-                    Turn data into competitive advantage. We design and implement Azure-based data solutions that automate reporting, streamline operations, and fuel smarter decisions.
+                    Get the same data intelligence large health systems use—without the enterprise price tag. We help independent practices reduce patient churn, fill schedules, and improve profitability with clear, actionable insights.
                 </p>
+                <p class="hero-location">
+                    Serving Colorado Front Range: Colorado Springs, Denver, Boulder, Fort Collins
+                </p>
+                <div class="hero-proof">
+                    <div class="hero-proof-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span>2-week implementation</span>
+                    </div>
+                    <div class="hero-proof-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span>40-60% less than large firms</span>
+                    </div>
+                    <div class="hero-proof-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span>$5M in documented savings</span>
+                    </div>
+                </div>
                 <div class="hero-cta-group">
-                    <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" class="btn btn-primary">Free 30-Min Strategy Call</a>
+                    <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" class="btn btn-primary">Get Your Free Practice Assessment</a>
+                    <a href="#services" class="btn btn-secondary">See How It Works</a>
                 </div>
+                <span class="cta-microcopy">15-minute call. No commitment. We'll show you 3 insights you're missing.</span>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Spry DP -->
-    <section id="why" style="background: white;">
+    <section class="problem-section">
         <div class="container">
-            <h2 class="section-title">Why Spry DP?</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem;">
-                <div style="background: white; padding: 2rem; border-radius: 0.5rem; border-left: 4px solid #832B03; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); transition: all 0.3s;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">👨‍💼</div>
-                    <h3 style="color: #832B03; margin-bottom: 0.8rem; font-weight: 700;">20+ Years Experience</h3>
-                    <p style="color: #6b7280; font-size: 0.95rem; line-height: 1.6;">Direct, hands-on expertise building data systems at enterprise scale. No junior resources—you work directly with someone who's solved these problems before.</p>
+            <div class="problem-grid">
+                <div class="problem-content">
+                    <h2>Your Practice Has Data. You Need Answers.</h2>
+                    <p>
+                        Large health systems invest millions in analytics teams. Independent practices get canned reports that don't answer the questions that matter: Which patients are about to leave? Which services actually make money? Why do Tuesdays always have gaps?
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        You shouldn't need a data science degree to understand your own practice.
+                    </p>
                 </div>
-                <div style="background: white; padding: 2rem; border-radius: 0.5rem; border-left: 4px solid #832B03; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); transition: all 0.3s;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
-                    <h3 style="color: #832B03; margin-bottom: 0.8rem; font-weight: 700;">Faster Decisions</h3>
-                    <p style="color: #6b7280; font-size: 0.95rem; line-height: 1.6;">As a solo consultant, decisions are quick and accountability is clear. Get expert guidance without the overhead of a large consulting firm.</p>
-                </div>
-                <div style="background: white; padding: 2rem; border-radius: 0.5rem; border-left: 4px solid #832B03; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); transition: all 0.3s;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎯</div>
-                    <h3 style="color: #832B03; margin-bottom: 0.8rem; font-weight: 700;">Mission-Driven Focus</h3>
-                    <p style="color: #6b7280; font-size: 0.95rem; line-height: 1.6;">We prioritize solutions that deliver real ROI. Every recommendation is grounded in your specific business goals, not generic best practices.</p>
-                </div>
-                <div style="background: white; padding: 2rem; border-radius: 0.5rem; border-left: 4px solid #832B03; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); transition: all 0.3s;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔧</div>
-                    <h3 style="color: #832B03; margin-bottom: 0.8rem; font-weight: 700;">Hands-On Implementation</h3>
-                    <p style="color: #6b7280; font-size: 0.95rem; line-height: 1.6;">From strategy to deployment, we stay involved. We don't just recommend solutions—we build them alongside your team.</p>
+                <div class="problem-stats">
+                    <div class="problem-stat">
+                        <div class="problem-stat-number">23%</div>
+                        <div class="problem-stat-label">Average patient churn rate in dental practices</div>
+                    </div>
+                    <div class="problem-stat">
+                        <div class="problem-stat-number">$200+</div>
+                        <div class="problem-stat-label">Cost per patient no-show</div>
+                    </div>
+                    <div class="problem-stat">
+                        <div class="problem-stat-number">6 mo</div>
+                        <div class="problem-stat-label">Typical enterprise implementation time</div>
+                    </div>
+                    <div class="problem-stat">
+                        <div class="problem-stat-number">$5K+</div>
+                        <div class="problem-stat-label">Monthly cost at large consulting firms</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Core Services</h2>
+            <div class="section-header">
+                <h2>What We Do</h2>
+                <p>We translate your practice data into plain-language insights you can act on immediately. Hover over each card to see an example dashboard.</p>
+            </div>
             <div class="services-grid">
-                <div class="service-card">
-                    <h3>ETL Automation & Data Integration</h3>
-                    <p>Eliminate manual data processes. We design and build automated pipelines that consolidate data from multiple sources, clean it, and load it where it's needed—24/7.</p>
-                    <div class="service-tech">Azure Data Factory • SQL • Python • API Integration</div>
+                <!-- Card 1: Patient Retention -->
+                <div class="service-card-container">
+                    <div class="service-card">
+                        <div class="service-card-front">
+                            <div class="service-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <h3>Stop Losing Patients Without Knowing Why</h3>
+                            <p>See which patients are at risk of leaving and get a plan to keep them. Know who's overdue, who's drifting away, and what brings them back.</p>
+                        </div>
+                        <div class="service-card-back">
+                            <div class="dashboard-preview">
+                                <div class="dashboard-preview-header">Patient Retention Dashboard</div>
+                                <div class="dashboard-preview-content">
+                                    <div class="metric-row">
+                                        <div class="metric-box">
+                                            <div class="metric-label">At Risk</div>
+                                            <div class="metric-value">127</div>
+                                            <div class="metric-change negative">↑ 18 this month</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Retention Rate</div>
+                                            <div class="metric-value">84%</div>
+                                            <div class="metric-change positive">↑ 3% vs last qtr</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Lost Revenue</div>
+                                            <div class="metric-value">$34K</div>
+                                            <div class="metric-change negative">From churned patients</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-placeholder">
+                                        <div class="chart-bar" style="height: 65%;"></div>
+                                        <div class="chart-bar" style="height: 78%;"></div>
+                                        <div class="chart-bar" style="height: 45%;"></div>
+                                        <div class="chart-bar" style="height: 88%;"></div>
+                                        <div class="chart-bar" style="height: 92%;"></div>
+                                    </div>
+                                    <div class="insight-preview">
+                                        Top churn risk: 52 patients overdue 180+ days. Sending targeted recall campaign could recover $18K annual revenue.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Flash Reporting & Dashboards</h3>
-                    <p>Replace static reports with dynamic dashboards that update automatically. Give your team instant visibility into KPIs, sales, operations, and customer metrics.</p>
-                    <div class="service-tech">Power BI • Tableau • Real-time Data Refresh</div>
+
+                <!-- Card 2: Schedule Optimization -->
+                <div class="service-card-container">
+                    <div class="service-card">
+                        <div class="service-card-front">
+                            <div class="service-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <h3>Fill Schedule Gaps That Cost You Money</h3>
+                            <p>Find no-show patterns and optimize your schedule. Know which appointment slots need overbooking and which don't. Stop the $200+ losses per empty chair.</p>
+                        </div>
+                        <div class="service-card-back">
+                            <div class="dashboard-preview">
+                                <div class="dashboard-preview-header">Schedule Optimization Dashboard</div>
+                                <div class="dashboard-preview-content">
+                                    <div class="metric-row">
+                                        <div class="metric-box">
+                                            <div class="metric-label">No-Show Rate</div>
+                                            <div class="metric-value">12%</div>
+                                            <div class="metric-change negative">$8.4K monthly loss</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Utilization</div>
+                                            <div class="metric-value">73%</div>
+                                            <div class="metric-change positive">Target: 85%</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Best Day</div>
+                                            <div class="metric-value">Thu</div>
+                                            <div class="metric-change positive">92% booked</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-placeholder">
+                                        <div class="chart-bar" style="height: 55%;"></div>
+                                        <div class="chart-bar" style="height: 68%;"></div>
+                                        <div class="chart-bar" style="height: 48%;"></div>
+                                        <div class="chart-bar" style="height: 92%;"></div>
+                                        <div class="chart-bar" style="height: 75%;"></div>
+                                    </div>
+                                    <div class="insight-preview">
+                                        Tuesday afternoons have 18% no-show rate. Implement double-booking for 2-3pm slots. Wednesday mornings underutilized at 61%. Shift marketing to fill early slots.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Data Strategy & Roadmapping</h3>
-                    <p>Don't know where to start? We assess your current state, identify opportunities, and create a prioritized roadmap that aligns technology investments with business goals.</p>
-                    <div class="service-tech">DMBOK2 • Data Governance • Business Analysis</div>
+
+                <!-- Card 3: Service Profitability -->
+                <div class="service-card-container">
+                    <div class="service-card">
+                        <div class="service-card-front">
+                            <div class="service-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <h3>See Which Services Make You Money</h3>
+                            <p>Know which procedures drive revenue and which drain it. Understand your true costs per service, including chair time and overhead. Stop guessing about profitability.</p>
+                        </div>
+                        <div class="service-card-back">
+                            <div class="dashboard-preview">
+                                <div class="dashboard-preview-header">Service Profitability Dashboard</div>
+                                <div class="dashboard-preview-content">
+                                    <div class="metric-row">
+                                        <div class="metric-box">
+                                            <div class="metric-label">Top Service</div>
+                                            <div class="metric-value">Crowns</div>
+                                            <div class="metric-change positive">68% margin</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Hidden Loss</div>
+                                            <div class="metric-value">Cleanings</div>
+                                            <div class="metric-change negative">12% margin</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Opportunity</div>
+                                            <div class="metric-value">$47K</div>
+                                            <div class="metric-change positive">Mix optimization</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-placeholder">
+                                        <div class="chart-bar" style="height: 95%;"></div>
+                                        <div class="chart-bar" style="height: 72%;"></div>
+                                        <div class="chart-bar" style="height: 58%;"></div>
+                                        <div class="chart-bar" style="height: 42%;"></div>
+                                        <div class="chart-bar" style="height: 25%;"></div>
+                                    </div>
+                                    <div class="insight-preview">
+                                        Crowns generate 68% margin but only 15% of procedures. Increase crown acceptance rate from 52% to 65% = $47K annual profit gain. Dr. Johnson converts at 78% vs practice avg 52%.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Data Governance Implementation</h3>
-                    <p>Build a sustainable data foundation. We establish policies, catalogs, and frameworks that ensure data quality, security, and compliance—especially critical for HIPAA or regulated environments.</p>
-                    <div class="service-tech">Microsoft Purview • Data Catalogs • Policy Frameworks</div>
+
+                <!-- Card 4: Practice Overview -->
+                <div class="service-card-container">
+                    <div class="service-card">
+                        <div class="service-card-front">
+                            <div class="service-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            </div>
+                            <h3>Know Your Numbers in 5 Minutes, Not 5 Hours</h3>
+                            <p>One dashboard shows everything that matters: patient flow, revenue trends, provider productivity, and key metrics. Updated daily. No spreadsheet digging required.</p>
+                        </div>
+                        <div class="service-card-back">
+                            <div class="dashboard-preview">
+                                <div class="dashboard-preview-header">Practice Health Dashboard</div>
+                                <div class="dashboard-preview-content">
+                                    <div class="metric-row">
+                                        <div class="metric-box">
+                                            <div class="metric-label">Monthly Revenue</div>
+                                            <div class="metric-value">$124K</div>
+                                            <div class="metric-change positive">↑ 8% vs target</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Active Patients</div>
+                                            <div class="metric-value">1,847</div>
+                                            <div class="metric-change positive">↑ 23 this month</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Collections</div>
+                                            <div class="metric-value">94%</div>
+                                            <div class="metric-change positive">Above benchmark</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-placeholder">
+                                        <div class="chart-bar" style="height: 65%;"></div>
+                                        <div class="chart-bar" style="height: 78%;"></div>
+                                        <div class="chart-bar" style="height: 85%;"></div>
+                                        <div class="chart-bar" style="height: 92%;"></div>
+                                        <div class="chart-bar" style="height: 88%;"></div>
+                                    </div>
+                                    <div class="insight-preview">
+                                        Revenue up 12% from strong crown acceptance. Dr. Johnson converting at 82% vs practice avg 68%. Schedule staff training on consultation approach. Thursday has 3 open slots.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Legacy System Migration</h3>
-                    <p>Moving to Azure? We manage the end-to-end migration of your data infrastructure, minimizing downtime and ensuring seamless transition.</p>
-                    <div class="service-tech">Azure SQL • Data Migration • Cloud Architecture</div>
+
+                <!-- Card 5: Insurance Analysis -->
+                <div class="service-card-container">
+                    <div class="service-card">
+                        <div class="service-card-front">
+                            <div class="service-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            </div>
+                            <h3>Figure Out Which Insurance Payers Pay</h3>
+                            <p>See which payers are profitable and which cost you money. Get data to renegotiate contracts or adjust your patient mix. Stop accepting losing insurance.</p>
+                        </div>
+                        <div class="service-card-back">
+                            <div class="dashboard-preview">
+                                <div class="dashboard-preview-header">Insurance Payer Analysis</div>
+                                <div class="dashboard-preview-content">
+                                    <div class="metric-row">
+                                        <div class="metric-box">
+                                            <div class="metric-label">Best Payer</div>
+                                            <div class="metric-value">Delta</div>
+                                            <div class="metric-change positive">72% reimburse</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Worst Payer</div>
+                                            <div class="metric-value">MediCal</div>
+                                            <div class="metric-change negative">38% reimburse</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Loss</div>
+                                            <div class="metric-value">$24K</div>
+                                            <div class="metric-change negative">Low payers</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-placeholder">
+                                        <div class="chart-bar" style="height: 92%;"></div>
+                                        <div class="chart-bar" style="height: 85%;"></div>
+                                        <div class="chart-bar" style="height: 65%;"></div>
+                                        <div class="chart-bar" style="height: 42%;"></div>
+                                        <div class="chart-bar" style="height: 28%;"></div>
+                                    </div>
+                                    <div class="insight-preview">
+                                        Delta and Blue Cross deliver 50%+ margins. United Healthcare at 18% margin with 89 patients gives leverage to renegotiate. Consider dropping MediCal (67 patients, 8% margin).
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>API Integration & SaaS Automation</h3>
-                    <p>Connect your business apps and automate workflows. From Square and Shopify to custom systems, we build integrations that eliminate silos.</p>
-                    <div class="service-tech">REST APIs • Workflow Automation • Data Synchronization</div>
+
+                <!-- Card 6: Custom Projects -->
+                <div class="service-card-container">
+                    <div class="service-card">
+                        <div class="service-card-front">
+                            <div class="service-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <h3>Custom Analytics Projects</h3>
+                            <p>Got a specific question? We build custom analyses for expansion planning, acquisition due diligence, provider compensation, and more.</p>
+                        </div>
+                        <div class="service-card-back">
+                            <div class="dashboard-preview">
+                                <div class="dashboard-preview-header">Custom Project: Expansion Analysis</div>
+                                <div class="dashboard-preview-content">
+                                    <div class="metric-row">
+                                        <div class="metric-box">
+                                            <div class="metric-label">Market Size</div>
+                                            <div class="metric-value">42K</div>
+                                            <div class="metric-change positive">Households</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Competition</div>
+                                            <div class="metric-value">8</div>
+                                            <div class="metric-change">Nearby practices</div>
+                                        </div>
+                                        <div class="metric-box">
+                                            <div class="metric-label">Break-Even</div>
+                                            <div class="metric-value">18mo</div>
+                                            <div class="metric-change positive">ROI projection</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-placeholder">
+                                        <div class="chart-bar" style="height: 30%; background: linear-gradient(180deg, #dc2626 0%, #991b1b 100%);"></div>
+                                        <div class="chart-bar" style="height: 55%; background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);"></div>
+                                        <div class="chart-bar" style="height: 75%;"></div>
+                                        <div class="chart-bar" style="height: 85%;"></div>
+                                        <div class="chart-bar" style="height: 95%;"></div>
+                                    </div>
+                                    <div class="insight-preview">
+                                        Market supports expansion. Demographics favorable (median income $82K). Recommended location: Parker & Arapahoe. Total investment: $480K. 5-year NPV: $412K at 12% discount.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Expertise / Tech Stack -->
-    <section id="expertise" class="expertise">
+    <!-- Why Choose Section -->
+    <section class="why-section">
         <div class="container">
-            <h2 class="section-title">Technology Expertise</h2>
-            <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">
-                Deep hands-on experience with enterprise data platforms and modern cloud infrastructure.
+            <div class="section-header">
+                <h2>Why Independent Practices Choose Us</h2>
+                <p>We built our service for practices like yours—not enterprise health systems.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-card-icon">🏥</div>
+                    <div>
+                        <h3>Healthcare-Specific Expertise</h3>
+                        <p>We speak the language of patient care. No translating business jargon into healthcare terms—we understand your world.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">⚡</div>
+                    <div>
+                        <h3>2-Week Implementation</h3>
+                        <p>Large firms take 6 months. We get you to first insights in 2 weeks because we've done this before and know what matters.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">💬</div>
+                    <div>
+                        <h3>Plain-Language Insights</h3>
+                        <p>No PhD in statistics required. We tell you what's happening, why it matters, and what to do about it—in words that make sense.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">🤝</div>
+                    <div>
+                        <h3>Personal Service</h3>
+                        <p>You work directly with your dedicated analyst—not a call center. Real conversations, not just dashboards and tickets.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">💰</div>
+                    <div>
+                        <h3>Right-Sized Pricing</h3>
+                        <p>40-60% less than enterprise consultants. You get serious expertise without the serious overhead of large firms.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">🔒</div>
+                    <div>
+                        <h3>HIPAA-Compliant & Secure</h3>
+                        <p>Your patient data stays protected. We follow strict healthcare security protocols and sign all required agreements—this is non-negotiable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Predictable Pricing</h2>
+                <p>Monthly plans that grow with your practice. No long-term contracts required.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-tier">Starter</div>
+                    <div class="pricing-price">$500<span>/month</span></div>
+                    <p class="pricing-desc">For practices ready to see what's possible with their data.</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Practice Health Dashboard
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Monthly performance report
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Email support
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Quarterly strategy call
+                        </li>
+                    </ul>
+                    <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" class="btn btn-secondary" style="margin-top: auto;">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-tier">Professional</div>
+                    <div class="pricing-price">$1,200<span>/month</span></div>
+                    <p class="pricing-desc">Full analytics suite for practices serious about growth.</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Everything in Starter
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Patient retention analysis
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Service profitability tracking
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Monthly strategy calls
+                        </li>
+                    </ul>
+                    <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" class="btn btn-primary" style="margin-top: auto;">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-tier">Enterprise</div>
+                    <div class="pricing-price">$2,500<span>/month</span></div>
+                    <p class="pricing-desc">For multi-location practices and growing groups.</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Everything in Professional
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Multi-location dashboards
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Provider benchmarking
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Weekly check-ins + priority access
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Custom reporting included
+                        </li>
+                    </ul>
+                    <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" class="btn btn-secondary" style="margin-top: auto;">Get Started</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: var(--gray); font-size: 0.95rem;">
+                Need a custom analytics project? We also offer time engagement from $2,000-$25,000.
             </p>
-            <div class="tech-stack">
-                <div class="tech-item">Azure Data Factory</div>
-                <div class="tech-item">Azure SQL Database</div>
-                <div class="tech-item">Power BI</div>
-                <div class="tech-item">Tableau</div>
-                <div class="tech-item">Microsoft Purview</div>
-                <div class="tech-item">SQL Server</div>
-                <div class="tech-item">Python</div>
-                <div class="tech-item">REST APIs</div>
-                <div class="tech-item">HIPAA Compliance</div>
-                <div class="tech-item">Data Governance</div>
-                <div class="tech-item">ETL Design</div>
-                <div class="tech-item">Cloud Architecture</div>
+        </div>
+    </section>
+
+    <!-- Free Assessment CTA -->
+    <section style="background: var(--white); padding: 4rem 0;">
+        <div class="container">
+            <div style="background: var(--cream); border: 2px solid var(--primary); border-radius: 12px; padding: 3rem; display: flex; gap: 2rem; align-items: center; max-width: 900px; margin: 0 auto;">
+                <div style="flex-shrink: 0; width: 80px; height: 80px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2.5rem;">
+                    📊
+                </div>
+                <div style="flex: 1;">
+                    <h3 style="font-size: 1.5rem; color: var(--charcoal); margin-bottom: 0.75rem;">Start With a Free Practice Assessment</h3>
+                    <p style="color: var(--gray); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.25rem;">
+                        Not sure where to start? We'll review your situation, identify your top 3 challenges, and show you 3 specific insights you're missing—no pressure, no pitch deck.
+                    </p>
+                    <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" class="btn btn-primary">Get Your Free Assessment</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Credentials -->
-    <section id="credentials" class="credentials">
+    <!-- FAQ Section -->
+    <section class="faq">
         <div class="container">
-            <h2 class="section-title">Background & Credentials</h2>
-            <div class="cred-grid">
-                <div class="cred-item">
-                    <div class="cred-number">20+</div>
-                    <div class="cred-label">Years in Data Analytics</div>
-                </div>
-                <div class="cred-item">
-                    <div class="cred-number">500+</div>
-                    <div class="cred-label">Direct Reports Managed</div>
-                </div>
-                <div class="cred-item">
-                    <div class="cred-number">$2M+</div>
-                    <div class="cred-label">Cost Savings Delivered</div>
-                </div>
+            <div class="section-header">
+                <h2>Common Questions</h2>
+                <p>Answers to questions practice owners ask before getting started.</p>
             </div>
-            <div class="cred-info">
-                <h3>Credentials & Development</h3>
-                <p>
-                    <strong>CDMP (Certified Data Management Professional) — In Progress.</strong> Pursuing Master-level certification in enterprise data governance, management best practices, and strategic data leadership to deepen expertise in data governance frameworks (DMBOK2).
-                </p>
-                <p>
-                    Continuous learning in enterprise data management and emerging best practices ensures recommendations are current and aligned with industry standards.
-                </p>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">We already get reports from our practice management software. Why do we need this?</div>
+                    <div class="faq-answer">
+                        It's like the difference between a thermometer and a doctor. Your software tells you what happened. We tell you why it happened and what to do. Your reports show 15% no-shows. We tell you it's Tuesday afternoons with patients under 35, and here's how to fix it. We take your data and turn it into decisions.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">We don't have time for a big implementation. How does this work?</div>
+                    <div class="faq-answer">
+                        We handle everything. Implementation takes 2 weeks from start to finish. After that, you spend 15 minutes a month reviewing your dashboards and 30 minutes on strategy calls—no manual data entry, no spreadsheets. We run everything in the background so you can focus on your practice.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Our data is messy. Are we ready for this?</div>
+                    <div class="faq-answer">
+                        Perfect. Messy data is our job. We've worked with 1,000-chair health systems and solo practitioners. Your software has the data. Most practices just don't have anyone to make sense of it. We spot data-quality issues as we work and help you fix them while delivering clean insights.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I know this will work for my practice specifically?</div>
+                    <div class="faq-answer">
+                        That's what the free assessment is for. We look at your practice size, software, and biggest pain points. Then we show you sample insights from practices like yours. No generic promises—specific findings you could see in the first 30 days.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if we need to cancel?</div>
+                    <div class="faq-answer">
+                        No long-term contracts. You can cancel anytime with 30 days notice. We also offer a 30-day money-back guarantee—if you don't see clear value in the first month, we'll refund your first month. We only keep clients who are getting results.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How is our patient data kept secure?</div>
+                    <div class="faq-answer">
+                        We follow strict HIPAA-compliance protocols. All data is encrypted in transit and at rest. We sign Business Associate Agreements (BAA) with every client. Your patient information never leaves our secure healthcare cloud. We can send you our full security documentation if you need it for your internal review.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Email Capture Section -->
+    <section class="email-capture">
         <div class="container">
-            <h2 class="section-title">Ready to Transform Your Data Operations?</h2>
-            <p>Let's discuss how automated data pipelines and strategic planning can accelerate your business.</p>
-            <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" class="btn btn-primary">Schedule Your Free Strategy Call</a>
+            <div class="email-capture-content">
+                <h3>Get Monthly Healthcare Data Tips</h3>
+                <p>Join independent practice owners who get our monthly insights on patient retention, profitability, and practice growth. No sales pitches.</p>
+                <form class="email-form" action="#" method="post">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary" style="background: var(--white); color: var(--primary);">Subscribe</button>
+                </form>
+                <p style="font-size: 0.85rem; margin-top: 0.75rem; opacity: 0.9;">We respect your privacy. Unsubscribe anytime. No spam.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credibility Section -->
+    <section style="background: var(--cream-dark); padding: 5rem 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 2.25rem; color: var(--charcoal); margin-bottom: 1rem;">Built by Someone Who's Done This Before</h2>
+                <p style="font-size: 1.15rem; color: var(--gray); line-height: 1.7; margin-bottom: 3rem;">
+                    I spent years managing data projects at major health insurers, building systems for Delta Dental of Colorado and TriZetto. I've seen how big health systems use data—and how independent practices get left behind. Now I'm bringing that same level of data intelligence to practices like yours.
+                </p>
+                <div class="credibility-stats">
+                    <div class="credibility-stat">
+                        <div class="credibility-stat-number">20+</div>
+                        <div class="credibility-stat-label">Years in Healthcare Data</div>
+                    </div>
+                    <div class="credibility-stat">
+                        <div class="credibility-stat-number">$5M</div>
+                        <div class="credibility-stat-label">Documented Savings Delivered</div>
+                    </div>
+                    <div class="credibility-stat">
+                        <div class="credibility-stat-number">6</div>
+                        <div class="credibility-stat-label">Fortune 500 Projects Run</div>
+                    </div>
+                    <div class="credibility-stat">
+                        <div class="credibility-stat-number">500+</div>
+                        <div class="credibility-stat-label">Data Projects Completed</div>
+                    </div>
+                </div>
+                <ul style="list-style: none; padding: 0; margin: 3rem auto 0; max-width: 600px; text-align: left;">
+                    <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem; color: var(--gray); font-size: 1rem;">
+                        <svg style="width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; margin-top: 0.2rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Former Analytics Manager at major dental insurance company
+                    </li>
+                    <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem; color: var(--gray); font-size: 1rem;">
+                        <svg style="width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; margin-top: 0.2rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Built dashboards seen from bench, delivering $5M+ documented savings
+                    </li>
+                    <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem; color: var(--gray); font-size: 1rem;">
+                        <svg style="width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; margin-top: 0.2rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Enterprise Power BI implementation with healthcare security standards
+                    </li>
+                    <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: var(--gray); font-size: 1rem;">
+                        <svg style="width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; margin-top: 0.2rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Background-checked healthcare technology systems at TriZetto
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section style="background: var(--charcoal); color: var(--white); padding: 5rem 0;">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 2.25rem; margin-bottom: 1rem; color: var(--white);">Ready to See What Your Data Can Do?</h2>
+            <p style="font-size: 1.15rem; color: rgba(255,255,255,0.9); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Schedule a free 15-minute call. We'll discuss your practice, your challenges, and show you 3 specific insights you're missing. No pressure, no pitch deck.
+            </p>
+            <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" class="btn btn-primary" style="background: var(--white); color: var(--primary);">Get Your Free Practice Assessment</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer style="background: var(--charcoal); color: rgba(255,255,255,0.8); padding: 3rem 0 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Spry Data Partners</h4>
-                    <p style="font-size: 0.875rem; margin-bottom: 1rem;">Data strategy and automation consulting for growing businesses.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem;">
-                        <a href="#services">ETL & Data Integration</a>
-                        <a href="#services">Dashboards & Reporting</a>
-                        <a href="#services">Data Strategy</a>
-                        <a href="#services">Data Governance</a>
+                <div class="footer-brand">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width: 36px; height: 36px;">
+                            <defs>
+                                <linearGradient id="footerPeakGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#A56F4F;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#832B03;stop-opacity:0.8" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="200" cy="200" r="190" fill="none" stroke="#A56F4F" stroke-width="2"/>
+                            <polygon points="80,300 200,80 320,300" fill="url(#footerPeakGradient)"/>
+                            <polygon points="200,120 170,220 230,220" fill="#FCF6F0"/>
+                        </svg>
+                        <span style="font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--white);">Spry Data Partners</span>
                     </div>
+                    <p style="font-size: 0.95rem; line-height: 1.6; max-width: 300px;">
+                        Data intelligence for independent dental and healthcare practices across the Colorado Front Range.
+                    </p>
                 </div>
                 <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div style="display: flex; justify-content: center; gap: 1rem;"><a href="https://www.linkedin.com/in/zack-reeser" target="_blank">LinkedIn</a><a href="https://www.youtube.com/@DataPraxis" target="_blank">YouTube</a><a href="mailto:info@sprydp.com">Email</a></div>
+                    <h4 style="color: var(--white); font-size: 1rem; margin-bottom: 1rem; font-weight: 600;">Services</h4>
+                    <a href="#services" style="display: block; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.95rem; transition: color 0.2s;" onmouseover="this.style.color='var(--primary-light)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Patient Retention Analysis</a>
+                    <a href="#services" style="display: block; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.95rem; transition: color 0.2s;" onmouseover="this.style.color='var(--primary-light)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Schedule Optimization</a>
+                    <a href="#services" style="display: block; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.95rem; transition: color 0.2s;" onmouseover="this.style.color='var(--primary-light)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Service Profitability</a>
+                </div>
+                <div class="footer-section">
+                    <h4 style="color: var(--white); font-size: 1rem; margin-bottom: 1rem; font-weight: 600;">Connect</h4>
+                    <a href="tel:719-425-8771" style="display: block; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.95rem; transition: color 0.2s;" onmouseover="this.style.color='var(--primary-light)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">719-425-8771</a>
+                    <a href="https://www.linkedin.com/in/zack-reeser" target="_blank" style="display: block; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.95rem; transition: color 0.2s;" onmouseover="this.style.color='var(--primary-light)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">LinkedIn</a>
+                    <a href="mailto:zack@sprydatapartners.com" style="display: block; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.95rem; transition: color 0.2s;" onmouseover="this.style.color='var(--primary-light)'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">YouTube</a>
+                </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Spry Data Partners. All rights reserved.</p>
+            <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">&copy; 2026 Spry Data Partners. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <style>
+        .why-section {
+            background: var(--white);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .why-card {
+            display: flex;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            background: var(--cream);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .why-card-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .why-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 0.35rem;
+        }
+
+        .why-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .pricing {
+            background: var(--cream-dark);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--sand);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.03);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-tier {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+
+        .pricing-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin: 0.75rem 0 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--sand);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--charcoal);
+            font-size: 0.95rem;
+        }
+
+        .pricing-features svg {
+            width: 18px;
+            height: 18px;
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 0.15rem;
+        }
+
+        .faq {
+            background: var(--cream-dark);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--sand);
+        }
+
+        .faq-question {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-answer {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .email-capture {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 0;
+        }
+
+        .email-capture-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .email-capture h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--white);
+        }
+
+        .email-capture p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-form input {
+            flex: 1;
+            padding: 0.875rem 1.25rem;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .email-form input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .email-form input:focus {
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .credibility-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .credibility-stat {
+            text-align: center;
+        }
+
+        .credibility-stat-number {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .credibility-stat-label {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.4;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .credibility-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .email-form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .credibility-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        // Add mobile menu toggle functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navUl = document.querySelector('nav ul');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function() {
+                navUl.style.display = navUl.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+    </script>
 </body>
 </html>
