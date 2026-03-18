@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your AI Is Only as Good as Your Data: Why Governance Comes First | Spry Data Partners</title>
+    <meta name="description" content="AI tools are useless without clean, governed data. Before investing in AI, fix your data quality. A practical approach to data governance that makes AI work.">
+    <meta name="keywords" content="data governance, AI data quality, data quality for AI, data management, CDMP">
+    <link rel="canonical" href="https://sprydp.com/blog/ai-only-as-good-as-your-data.html">
+    <meta name="author" content="Zack Reeser">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Your AI Is Only as Good as Your Data: Why Governance Comes First | Spry Data Partners">
+    <meta property="og:description" content="AI tools are useless without clean, governed data. Before investing in AI, fix your data quality. A practical approach to data governance that makes AI work.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sprydp.com/blog/ai-only-as-good-as-your-data.html">
+    <meta property="og:site_name" content="Spry Data Partners">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":"Your AI Is Only as Good as Your Data: Why Governance Comes First","description":"AI tools are useless without clean, governed data. Before investing in AI, fix your data quality. A practical approach to data governance that makes AI work.","author":{"@type":"Person","name":"Zack Reeser","url":"https://www.linkedin.com/in/zack-reeser"},"publisher":{"@type":"Organization","name":"Spry Data Partners","url":"https://sprydp.com"},"datePublished":"2026-02-03","dateModified":"2026-02-03","mainEntityOfPage":"https://sprydp.com/blog/ai-only-as-good-as-your-data.html","keywords":["data governance","AI data quality","data management","CDMP","clean data"]}
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:wght@700&display=swap" rel="stylesheet">
+    <style>*{margin:0;padding:0;box-sizing:border-box}:root{--primary:#832B03;--primary-light:#A56F4F;--cream:#FCF6F0;--cream-dark:#F5EFE6;--sand:#E5DCCF;--charcoal:#33302C;--gray:#6b7280;--white:#ffffff;--shadow-sm:0 2px 4px rgba(0,0,0,0.06)}html{scroll-behavior:smooth}body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;background-color:var(--cream-dark);color:var(--charcoal);line-height:1.6}h1,h2,h3{font-family:'Fraunces',Georgia,serif}.container{max-width:1140px;margin:0 auto;padding:0 1.5rem}header{background-color:var(--cream);box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:100}nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;max-width:1140px;margin:0 auto}.logo{font-family:'Fraunces',Georgia,serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:.6rem}.logo svg{width:36px;height:36px}.logo-text{display:flex;flex-direction:column}.logo-name{font-family:'Fraunces',Georgia,serif;font-size:1.3rem;font-weight:700;line-height:1.2}.logo-tagline{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:500;color:var(--gray);line-height:1.2}nav ul{display:flex;list-style:none;gap:2rem;align-items:center}nav a{text-decoration:none;color:var(--gray);font-size:.95rem;font-weight:500;transition:color .2s}nav a:hover{color:var(--primary)}.nav-cta{background:var(--primary);color:var(--white)!important;padding:.6rem 1.25rem;border-radius:6px;font-weight:600}.nav-cta:hover{background:var(--primary-light)}.mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem}.mobile-menu-btn svg{width:24px;height:24px;color:var(--charcoal)}.btn{display:inline-block;padding:.875rem 1.75rem;border-radius:6px;font-weight:600;text-decoration:none;transition:all .2s ease;border:none;cursor:pointer;font-size:1rem}.btn-primary{background-color:var(--primary);color:var(--white)}.btn-primary:hover{background-color:var(--primary-light);transform:translateY(-1px)}.blog-header{background:linear-gradient(135deg,var(--cream) 0%,var(--sand) 100%);padding:4rem 0 3rem}.blog-breadcrumb{font-size:.9rem;color:var(--gray);margin-bottom:1.5rem}.blog-breadcrumb a{color:var(--primary);text-decoration:none}.blog-breadcrumb a:hover{text-decoration:underline}.blog-meta{display:flex;gap:1.5rem;align-items:center;margin-top:1.5rem;font-size:.9rem;color:var(--gray)}.blog-header h1{font-size:2.5rem;line-height:1.2;color:var(--charcoal);max-width:800px}.blog-header p.subtitle{font-size:1.15rem;color:var(--gray);margin-top:1rem;max-width:700px;line-height:1.7}article.blog-content{max-width:760px;margin:0 auto;padding:3rem 1.5rem 5rem}article.blog-content h2{font-size:1.75rem;color:var(--charcoal);margin:2.5rem 0 1rem;font-weight:700}article.blog-content h3{font-size:1.35rem;color:var(--charcoal);margin:2rem 0 .75rem;font-weight:700}article.blog-content p{font-size:1.05rem;color:var(--charcoal);line-height:1.8;margin-bottom:1.25rem}article.blog-content ul,article.blog-content ol{margin:1rem 0 1.5rem 1.5rem;font-size:1.05rem;line-height:1.8;color:var(--charcoal)}article.blog-content li{margin-bottom:.5rem}article.blog-content blockquote{border-left:4px solid var(--primary);padding:1rem 1.5rem;margin:1.5rem 0;background:var(--cream);border-radius:0 8px 8px 0;font-size:1.05rem;color:var(--gray);font-style:italic}article.blog-content strong{color:var(--charcoal);font-weight:600}article.blog-content .callout{background:var(--cream);border:1px solid var(--sand);border-radius:10px;padding:1.5rem;margin:2rem 0;font-size:1rem}article.blog-content .callout-title{font-weight:700;color:var(--primary);margin-bottom:.5rem;font-size:1.05rem}.blog-cta{background:var(--charcoal);color:var(--white);padding:3rem;border-radius:12px;margin:3rem 0;text-align:center}.blog-cta h3{font-size:1.5rem;margin-bottom:.75rem;color:var(--white)}.blog-cta p{color:rgba(255,255,255,.9);margin-bottom:1.5rem;font-size:1.05rem}.blog-author{display:flex;gap:1.5rem;padding:2rem;background:var(--cream);border-radius:12px;margin:3rem 0;border:1px solid var(--sand)}.blog-author-avatar{width:80px;height:80px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;color:var(--white);font-family:'Fraunces',serif;font-size:1.75rem;font-weight:700;flex-shrink:0}.blog-author-info h4{font-size:1.1rem;color:var(--charcoal);margin-bottom:.25rem}.blog-author-info p{font-size:.95rem;color:var(--gray);line-height:1.6;margin:0}.blog-author-info a{color:var(--primary);text-decoration:none;font-weight:500}footer{background:var(--charcoal);color:rgba(255,255,255,0.8);padding:2rem 0;text-align:center}footer p{font-size:.9rem;color:rgba(255,255,255,0.6)}footer a{color:rgba(255,255,255,0.7);text-decoration:none}@media(max-width:768px){nav ul{display:none}nav ul.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--cream);padding:1rem 1.5rem;box-shadow:var(--shadow-sm);gap:1rem}.mobile-menu-btn{display:block}.blog-header h1{font-size:1.75rem}.blog-header{padding:2.5rem 0 2rem}article.blog-content{padding:2rem 1.5rem 3rem}.blog-author{flex-direction:column;text-align:center;align-items:center}}</style>
+</head>
+<body>
+    <header><nav aria-label="Main navigation"><a href="/" class="logo"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="peakGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#832B03;stop-opacity:1" /><stop offset="100%" style="stop-color:#A56F4F;stop-opacity:0.8" /></linearGradient></defs><circle cx="200" cy="200" r="190" fill="none" stroke="#832B03" stroke-width="2"/><polygon points="80,300 200,80 320,300" fill="url(#peakGradient)"/><polygon points="200,120 170,220 230,220" fill="#FCF6F0"/><polygon points="200,80 195,100 205,100" fill="#FCF6F0"/></svg><div class="logo-text"><span class="logo-name">Spry Data Partners</span><span class="logo-tagline">Data Intelligence for Growing Businesses</span></div></a><ul id="nav-menu"><li><a href="/#industries">Industries</a></li><li><a href="/#services">Services</a></li><li><a href="/blog/">Blog</a></li><li><a href="/#about">About</a></li><li><a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" rel="noopener" class="nav-cta">Free Consultation</a></li></ul><button class="mobile-menu-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></nav></header>
+    <main>
+        <div class="blog-header"><div class="container">
+            <div class="blog-breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; AI &amp; Data Governance</div>
+            <h1>Your AI Is Only as Good as Your Data: Why Governance Comes First</h1>
+            <p class="subtitle">Everyone wants AI. Almost nobody has the data quality to make it work. Governance is the foundation.</p>
+            <div class="blog-meta"><div>Zack Reeser</div><div>February 3, 2026</div><div>9 min read</div></div>
+        </div></div>
+        <article class="blog-content">
+
+            <p>The conversation always starts the same way. "We want to use AI." The follow-up question is always the same too. "How clean is your data?"</p>
+
+            <p>The answer is usually a pause. Then something like "not great" or "we've got some duplicates" or "it depends on who entered it."</p>
+
+            <p>Here is the truth. AI does not fix bad data. It amplifies it. A prediction model trained on inconsistent, duplicate, or incomplete records will give you confident wrong answers. That is worse than no AI at all.</p>
+
+            <h2>What "Bad Data" Looks Like in Practice</h2>
+
+            <p>In construction, it looks like job cost codes that mean different things on different projects. One PM codes equipment rental under "Materials." Another codes it under "Subcontractor." Your cross-project analysis is garbage because the categories do not match.</p>
+
+            <p>In healthcare, it looks like 2,400 duplicate patient records across three locations. Your patient retention numbers are inflated because the same person appears as three different patients.</p>
+
+            <p>In professional services, it looks like time entries rounded to the nearest hour instead of the nearest 15 minutes. Your utilization rate says 78%. Real utilization is closer to 65%.</p>
+
+            <div class="callout">
+                <div class="callout-title">Garbage In, Garbage Out</div>
+                <p>An AI model will find patterns in whatever you give it. If your data has systematic errors, the model will learn those errors as truth. A cash flow prediction model trained on AR data where invoices are inconsistently dated will predict cash flow based on the inconsistency, not the reality.</p>
+            </div>
+
+            <h2>Data Governance Answers Four Questions</h2>
+
+            <ol>
+                <li><strong>Who owns this data?</strong> Every data element needs one person accountable for its accuracy. Not a committee. One person.</li>
+                <li><strong>What does this field mean?</strong> A shared definition. If "project start date" means something different to the PM and the controller, your reports will never agree.</li>
+                <li><strong>How do we keep it clean?</strong> Validation rules at the point of entry. Required fields. Dropdown lists instead of free text.</li>
+                <li><strong>How do we know when it breaks?</strong> Automated data quality checks that flag problems before they reach a dashboard or an AI model.</li>
+            </ol>
+
+            <h2>The Right Order of Operations</h2>
+
+            <ol>
+                <li><strong>Audit your data.</strong> Pick one business area. Inventory the data. Check quality. Find the gaps.</li>
+                <li><strong>Fix the foundation.</strong> Clean the records. Standardize definitions. Put validation rules in place.</li>
+                <li><strong>Build reporting first.</strong> Dashboards on clean data give you immediate value and reveal remaining quality issues.</li>
+                <li><strong>Then add AI.</strong> With clean, governed data, AI models have a solid foundation. Predictions are accurate because inputs are accurate.</li>
+            </ol>
+
+            <p>Steps 1 through 3 take 4 to 8 weeks for a focused business area. Step 4 adds another 4 to 6 weeks. The whole process from messy data to working AI is 3 to 4 months, not 3 to 4 years.</p>
+
+            <p>I've seen teams with $200K analytics platforms that nobody uses because the data is not trusted. I've seen teams with a single Power BI dashboard that drives every Monday morning decision because the data is clean and everyone knows it.</p>
+
+            <h2>Start Here</h2>
+
+            <p>Pick one pain point. The report that's always wrong. The number your team argues about. Trace it back to the source. Fix it there. That's your first governance win. Stack 10 of those wins and you have a governed data environment ready for AI.</p>
+            <div class="blog-cta"><h3>Want to See Your Own Numbers?</h3><p>We build the dashboards and analytics that turn your data into decisions. 30-minute consultation. No pressure.</p><a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" rel="noopener" class="btn btn-primary" style="background:var(--white);color:var(--primary)">Schedule Free Consultation</a></div>
+            <div class="blog-author"><div class="blog-author-avatar">ZR</div><div class="blog-author-info"><h4>Zack Reeser</h4><p>Founder, Spry Data Partners. 20+ years turning raw data into real savings. Built analytics teams, documented $5M+ in savings, and helped organizations make faster, smarter decisions. Now I work with growing businesses across Colorado.</p><p style="margin-top:.5rem"><a href="https://www.linkedin.com/in/zack-reeser" target="_blank" rel="noopener">Connect on LinkedIn</a></p></div></div>
+        </article>
+    </main>
+    <footer><div class="container"><p>&copy; 2026 Spry Data Partners. <a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" rel="noopener">Free Consultation</a></p></div></footer>
+    <script>const mb=document.querySelector('.mobile-menu-btn'),nm=document.getElementById('nav-menu');if(mb&&nm){mb.addEventListener('click',function(){const e=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',!e);nm.classList.toggle('active')});nm.querySelectorAll('a').forEach(l=>{l.addEventListener('click',()=>{nm.classList.remove('active');mb.setAttribute('aria-expanded','false')})})}</script>
+</body>
+</html>
