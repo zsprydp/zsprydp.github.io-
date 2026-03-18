@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>3 Power BI Dashboards Every Construction CFO Needs | Spry Data Partners Blog</title>
+    <meta name="description" content="Construction finance teams spend 4-8 hours a week rebuilding reports. Three Power BI dashboards replace that work: job cost tracking, cash flow monitoring, and WIP reporting.">
+    <meta name="keywords" content="Power BI construction, construction finance dashboards, job cost tracking, WIP report Power BI, cash flow dashboard, Colorado Springs data analytics">
+    <link rel="canonical" href="https://sprydp.com/blog/power-bi-dashboards-construction-finance.html">
+    <meta property="og:title" content="3 Power BI Dashboards Every Construction CFO Needs | Spry Data Partners">
+    <meta property="og:description" content="Construction finance teams spend 4-8 hours a week rebuilding reports. Three Power BI dashboards replace that work.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sprydp.com/blog/power-bi-dashboards-construction-finance.html">
+
+    <meta name="author" content="Zack Reeser">
+    <meta name="robots" content="index, follow">
+    <meta property="og:site_name" content="Spry Data Partners">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "3 Power BI Dashboards Every Construction CFO Needs",
+        "description": "Construction finance teams spend 4-8 hours a week rebuilding reports. Three Power BI dashboards replace that work: job cost tracking, cash flow monitoring, and WIP reporting.",
+        "author": {
+            "@type": "Person",
+            "name": "Zack Reeser",
+            "url": "https://www.linkedin.com/in/zack-reeser"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Spry Data Partners",
+            "url": "https://sprydp.com"
+        },
+        "datePublished": "2026-03-18",
+        "dateModified": "2026-03-18",
+        "mainEntityOfPage": "https://sprydp.com/blog/power-bi-dashboards-construction-finance.html",
+        "keywords": ["Power BI construction", "construction finance dashboards", "job cost tracking", "WIP report", "cash flow dashboard"]
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:wght@700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#832B03;--primary-light:#A56F4F;--cream:#FCF6F0;--cream-dark:#F5EFE6;--sand:#E5DCCF;--charcoal:#33302C;--gray:#6b7280;--white:#ffffff;--shadow-sm:0 2px 4px rgba(0,0,0,0.06)}
+        html{scroll-behavior:smooth}
+        body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;background-color:var(--cream-dark);color:var(--charcoal);line-height:1.6}
+        h1,h2,h3{font-family:'Fraunces',Georgia,serif}
+        .container{max-width:1140px;margin:0 auto;padding:0 1.5rem}
+        header{background-color:var(--cream);box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:100}
+        nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;max-width:1140px;margin:0 auto}
+        .logo{font-family:'Fraunces',Georgia,serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:.6rem}
+        .logo svg{width:36px;height:36px}
+        .logo-text{display:flex;flex-direction:column}
+        .logo-name{font-family:'Fraunces',Georgia,serif;font-size:1.3rem;font-weight:700;line-height:1.2}
+        .logo-tagline{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:500;color:var(--gray);line-height:1.2}
+        nav ul{display:flex;list-style:none;gap:2rem;align-items:center}
+        nav a{text-decoration:none;color:var(--gray);font-size:.95rem;font-weight:500;transition:color .2s}
+        nav a:hover{color:var(--primary)}
+        .nav-cta{background:var(--primary);color:var(--white)!important;padding:.6rem 1.25rem;border-radius:6px;font-weight:600}
+        .nav-cta:hover{background:var(--primary-light)}
+        .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+        .mobile-menu-btn svg{width:24px;height:24px;color:var(--charcoal)}
+        .btn{display:inline-block;padding:.875rem 1.75rem;border-radius:6px;font-weight:600;text-decoration:none;transition:all .2s ease;border:none;cursor:pointer;font-size:1rem}
+        .btn-primary{background-color:var(--primary);color:var(--white)}
+        .btn-primary:hover{background-color:var(--primary-light);transform:translateY(-1px)}
+        .blog-header{background:linear-gradient(135deg,var(--cream) 0%,var(--sand) 100%);padding:4rem 0 3rem}
+        .blog-breadcrumb{font-size:.9rem;color:var(--gray);margin-bottom:1.5rem}
+        .blog-breadcrumb a{color:var(--primary);text-decoration:none}
+        .blog-breadcrumb a:hover{text-decoration:underline}
+        .blog-meta{display:flex;gap:1.5rem;align-items:center;margin-top:1.5rem;font-size:.9rem;color:var(--gray)}
+        .blog-meta-item{display:flex;align-items:center;gap:.35rem}
+        .blog-header h1{font-size:2.5rem;line-height:1.2;color:var(--charcoal);max-width:800px}
+        .blog-header p.subtitle{font-size:1.15rem;color:var(--gray);margin-top:1rem;max-width:700px;line-height:1.7}
+        article.blog-content{max-width:760px;margin:0 auto;padding:3rem 1.5rem 5rem}
+        article.blog-content h2{font-size:1.75rem;color:var(--charcoal);margin:2.5rem 0 1rem;font-weight:700}
+        article.blog-content h3{font-size:1.35rem;color:var(--charcoal);margin:2rem 0 .75rem;font-weight:700}
+        article.blog-content p{font-size:1.05rem;color:var(--charcoal);line-height:1.8;margin-bottom:1.25rem}
+        article.blog-content ul,article.blog-content ol{margin:1rem 0 1.5rem 1.5rem;font-size:1.05rem;line-height:1.8;color:var(--charcoal)}
+        article.blog-content li{margin-bottom:.5rem}
+        article.blog-content blockquote{border-left:4px solid var(--primary);padding:1rem 1.5rem;margin:1.5rem 0;background:var(--cream);border-radius:0 8px 8px 0;font-size:1.05rem;color:var(--gray);font-style:italic}
+        article.blog-content strong{color:var(--charcoal);font-weight:600}
+        article.blog-content .callout{background:var(--cream);border:1px solid var(--sand);border-radius:10px;padding:1.5rem;margin:2rem 0;font-size:1rem}
+        article.blog-content .callout-title{font-weight:700;color:var(--primary);margin-bottom:.5rem;font-size:1.05rem}
+        article.blog-content .stat-highlight{display:inline-block;background:var(--primary);color:var(--white);padding:.15rem .5rem;border-radius:4px;font-weight:600;font-size:.95rem}
+        .blog-cta{background:var(--charcoal);color:var(--white);padding:3rem;border-radius:12px;margin:3rem 0;text-align:center}
+        .blog-cta h3{font-size:1.5rem;margin-bottom:.75rem;color:var(--white)}
+        .blog-cta p{color:rgba(255,255,255,.9);margin-bottom:1.5rem;font-size:1.05rem}
+        .blog-author{display:flex;gap:1.5rem;padding:2rem;background:var(--cream);border-radius:12px;margin:3rem 0;border:1px solid var(--sand)}
+        .blog-author-avatar{width:80px;height:80px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;color:var(--white);font-family:'Fraunces',serif;font-size:1.75rem;font-weight:700;flex-shrink:0}
+        .blog-author-info h4{font-size:1.1rem;color:var(--charcoal);margin-bottom:.25rem}
+        .blog-author-info p{font-size:.95rem;color:var(--gray);line-height:1.6;margin:0}
+        .blog-author-info a{color:var(--primary);text-decoration:none;font-weight:500}
+        footer{background:var(--charcoal);color:rgba(255,255,255,0.8);padding:2rem 0;text-align:center}
+        footer p{font-size:.9rem;color:rgba(255,255,255,0.6)}
+        footer a{color:rgba(255,255,255,0.7);text-decoration:none}
+        @media(max-width:768px){
+            nav ul{display:none}
+            nav ul.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--cream);padding:1rem 1.5rem;box-shadow:var(--shadow-sm);gap:1rem}
+            .mobile-menu-btn{display:block}
+            .blog-header h1{font-size:1.75rem}
+            .blog-header{padding:2.5rem 0 2rem}
+            article.blog-content{padding:2rem 1.5rem 3rem}
+            .blog-author{flex-direction:column;text-align:center;align-items:center}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <a href="/" class="logo">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="peakGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#832B03;stop-opacity:1" /><stop offset="100%" style="stop-color:#A56F4F;stop-opacity:0.8" /></linearGradient></defs><circle cx="200" cy="200" r="190" fill="none" stroke="#832B03" stroke-width="2"/><polygon points="80,300 200,80 320,300" fill="url(#peakGradient)"/><polygon points="200,120 170,220 230,220" fill="#FCF6F0"/><polygon points="200,80 195,100 205,100" fill="#FCF6F0"/></svg>
+                <div class="logo-text"><span class="logo-name">Spry Data Partners</span><span class="logo-tagline">Data Intelligence for Growing Businesses</span></div>
+            </a>
+            <ul id="nav-menu">
+                <li><a href="/#industries">Industries</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" rel="noopener" class="nav-cta">Get Free Consultation</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="blog-header">
+            <div class="container">
+                <div class="blog-breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; This Post</div>
+                <h1>3 Power BI Dashboards Every Construction CFO Needs</h1>
+                <p class="subtitle">Your accounting software tells you what happened. These three dashboards tell you what to do about it.</p>
+                <div class="blog-meta">
+                    <div class="blog-meta-item">Zack Reeser</div>
+                    <div class="blog-meta-item">March 18, 2026</div>
+                    <div class="blog-meta-item">8 min read</div>
+                </div>
+            </div>
+        </div>
+
+        <article class="blog-content">
+
+            <p>Tomorrow morning I am presenting to a room full of GCs, subcontractors, and controllers at the CFMA Pikes Peak Chapter. The topic they asked for: how to use Power BI for construction finance.</p>
+
+            <p>I already know what will happen when I ask my opening question: "Raise your hand if you opened a spreadsheet this week to answer a financial question about a job." Every hand will go up.</p>
+
+            <p>That is the normal state of construction finance. The data is there. It lives in your accounting system, your payroll tool, your project management software. But getting answers requires exporting, copying, pivoting, and formatting. Every week. The same reports. The same drill.</p>
+
+            <p>I spent 20 years in data analytics, including building a 6-person team at Delta Dental of Colorado that documented $5M in savings. I started Spry Data Partners to bring that same approach to construction and healthcare. The talk I am giving tomorrow covers three Power BI dashboards that replace the manual reporting cycle. Here is what I will be showing them.</p>
+
+            <h2>Dashboard 1: Job Cost Tracker</h2>
+
+            <p>This is the dashboard you open every morning. It answers one question: where do we stand on every active project?</p>
+
+            <p>Four KPI cards sit at the top. Total budget, total spent, budget remaining, and percent consumed. Below that, a bar chart shows budget versus actual by cost code. Red bars mean over budget. Green means on track. One click on a project name filters everything on the page.</p>
+
+            <p>At Delta Dental, I watched our finance team spend hours pulling similar data from three systems and reconciling it in Excel. The first time we automated that into a dashboard, the reaction was always the same: "Why did we wait so long?"</p>
+
+            <div class="callout">
+                <div class="callout-title">Why this dashboard matters</div>
+                <p>The bar chart does something spreadsheets do not. It shows you budget versus actual for every cost code on a single project in one view. Concrete over budget by $20K. Electrical on track. Finishes trending high. Your brain processes color faster than numbers. In a glance, you know which cost codes need attention.</p>
+            </div>
+
+            <p>The dashboard also pulls change order data. Two cards show approved CO totals and pending CO exposure. A "Revised Budget" measure adds approved COs to the original budget, giving you the real number to track against.</p>
+
+            <p>I built the demo with 12 fictional projects across 144 cost line items. The data structure mirrors what most GCs and subs export from Sage, Viewpoint, or Foundation. Nothing exotic. Standard cost codes, standard categories. If your accounting system exports data, Power BI reads it.</p>
+
+            <h2>Dashboard 2: Cash Flow Monitor</h2>
+
+            <p>This is the dashboard controllers care about most. Two lines on a chart. Green is cash received. Red is cash paid out.</p>
+
+            <p>The gap between those lines is your cash position. When the gap is wide, you are in good shape. When the lines converge, you have a problem. When they cross, you are funding operations out of pocket.</p>
+
+            <p>Here is a story from my healthcare work that applies directly to construction. A health system had $400,000 in accounts receivable over 90 days. Nobody was chasing it because the data was buried in a spreadsheet export that nobody opened. When we built a visual AR report, the collections team recovered $180,000 in the first quarter. Construction has the same dynamic. Outstanding receivables sit in a system somewhere. A dashboard puts them in front of the right person.</p>
+
+            <div class="callout">
+                <div class="callout-title">The 30-Day Forward Look</div>
+                <p>The cash flow dashboard includes a forward view. Expected cash in from accounts receivable. Expected cash out from AP commitments. The gap between them for the next 30 days. Build this view and you will see cash crunches coming before they arrive.</p>
+            </div>
+
+            <p>The dashboard has an AR aging donut chart that breaks outstanding receivables into buckets: current, 1-30 days, 31-60, 61-90, and 90+. Filter out paid invoices and you have a visual collection priority list. The darkest slice is where your team should focus first.</p>
+
+            <h2>Dashboard 3: WIP Report</h2>
+
+            <p>If I had to pick the one report that eats the most time for construction controllers, it is the WIP report. Most firms build it monthly in a spreadsheet. Some spend a full day on it.</p>
+
+            <p>In Power BI, the WIP report updates with your data. Zero hours to produce after the initial build.</p>
+
+            <p>The table shows the standard WIP format: revised contract value, costs to date, estimated cost to complete, percent complete, earned revenue, billings to date, and over/under billing. Auditors recognize this layout immediately. Bankers expect this level of detail when you review your credit line.</p>
+
+            <p>Let me put a number on it. If your controller spends 8 hours a month building this report in Excel, that is 96 hours a year. At a loaded cost of $75 an hour, you are spending <span class="stat-highlight">$7,200 a year</span> on a report that Power BI produces automatically after the initial setup.</p>
+
+            <div class="callout">
+                <div class="callout-title">The Banking Angle</div>
+                <p>When you walk into a bank meeting and pull up a live WIP report on your laptop, you are telling the banker you know your numbers in real time. You filter by project, by date range, by cost category. Live. In front of them. That level of financial visibility changes the conversation about your credit line.</p>
+            </div>
+
+            <p>The over/under billing column drives the visual story. Blue cells mean underbilled (an asset). Red cells mean overbilled (a liability). A waterfall chart shows each project's over/under contribution. The net bar at the end tells you your company-wide position in 2 seconds.</p>
+
+            <h2>What Power BI Does Not Do</h2>
+
+            <p>I am spending time on this in the talk because it matters more than the features.</p>
+
+            <p><strong>It does not fix bad data.</strong> Inconsistent job codes, duplicate entries, naming conventions that change by who enters them. Power BI will display your bad data in beautiful charts. That does not make it useful. Clean your data first.</p>
+
+            <p><strong>It does not replace your accounting software.</strong> Sage, Viewpoint, Foundation, whatever you run. Power BI sits on top of those systems. It reads a copy of the data. Think of it as a window, not a replacement.</p>
+
+            <p><strong>It does not build itself.</strong> Someone on your team has to learn it. The learning curve is real. But if you have someone who writes VLOOKUP or SUMIF formulas in Excel, they have 80% of the skills already. The DAX formula language in Power BI is Excel formulas with a different name.</p>
+
+            <h2>Getting Started: The Honest Numbers</h2>
+
+            <p><strong>Cost:</strong> Power BI Desktop is free. Download it from Microsoft. The Pro license for sharing dashboards is $10 per user per month. If your company has Microsoft 365 E5 licenses, Power BI Pro is already included at no extra charge. Check with your IT admin before buying anything.</p>
+
+            <p><strong>Time:</strong> Your first dashboard takes 20 to 40 hours if you are learning as you go. The second takes 10 to 15. By the third, you are down to 5 to 8 hours because you reuse patterns.</p>
+
+            <p><strong>Data prep:</strong> This is where most projects stall. Standardize your job codes. Fix your naming conventions. Most Power BI projects that fail do not fail because of the tool. They fail because the source data was never cleaned up.</p>
+
+            <p>My recommendation: pick one report. The one that eats the most of your controller's time every month. Build that one in Power BI first. Get it right. Show your team. Then build the next one.</p>
+
+            <div class="callout" style="background:var(--charcoal);border:none;text-align:center;padding:2rem">
+                <div class="callout-title" style="color:var(--white);font-size:1.2rem;margin-bottom:.75rem">Free Download: From Spreadsheets to Strategy (One-Pager)</div>
+                <p style="color:rgba(255,255,255,.85);margin-bottom:1rem;font-size:1rem">The ROI math, the three dashboards, and the getting started checklist on a single page. Print it. Pin it to your wall. Share it with your CFO.</p>
+                <a href="/resources/power-bi-construction-guide.pdf" download class="btn btn-primary" style="background:var(--white);color:var(--charcoal);font-size:.95rem">Download the One-Pager (PDF)</a>
+            </div>
+
+            <h2>The Real Question</h2>
+
+            <p>You already have the data. Every job you bid, every invoice you process, every payroll run. It is sitting in your systems right now.</p>
+
+            <p>The question is not whether your firm needs better visibility into its financial data. It does. The question is whether you are going to be the person who makes it happen, or the person who rebuilds the same spreadsheet next month.</p>
+
+            <p>Power BI Desktop is free. The first dashboard takes a weekend of focused work. The return shows up the first month you skip a manual report build.</p>
+
+            <p>Start with one report. Prove the value. Then expand.</p>
+
+            <div class="blog-cta">
+                <h3>Want to See Your Own Numbers?</h3>
+                <p>We build the dashboards and analytics that turn your data into decisions. 30-minute consultation. No pressure.</p>
+                <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" rel="noopener" class="btn btn-primary" style="background:var(--white);color:var(--primary)">Schedule Free Consultation</a>
+            </div>
+
+            <div class="blog-author">
+                <div class="blog-author-avatar">ZR</div>
+                <div class="blog-author-info">
+                    <h4>Zack Reeser</h4>
+                    <p>Founder of Spry Data Partners. 20+ years in data and analytics. Built a 6-person team at Delta Dental of Colorado and documented $5M in savings. Now helping construction firms, healthcare practices, and growing businesses make better decisions with their data.</p>
+                    <p style="margin-top:.5rem"><a href="https://www.linkedin.com/in/zack-reeser" target="_blank" rel="noopener">Connect on LinkedIn</a></p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Spry Data Partners. <a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" rel="noopener">Free Consultation</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const mb=document.querySelector('.mobile-menu-btn'),nm=document.getElementById('nav-menu');
+        if(mb&&nm){mb.addEventListener('click',function(){const e=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',!e);nm.classList.toggle('active')});nm.querySelectorAll('a').forEach(l=>{l.addEventListener('click',()=>{nm.classList.remove('active');mb.setAttribute('aria-expanded','false')})})}
+    </script>
+</body>
+</html>
