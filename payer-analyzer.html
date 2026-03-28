@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Payer Profitability Analyzer | Spry Data Partners</title>
+    <meta name="description" content="Upload your claims CSV and see which insurance payers are draining your practice's margin. Free tool from Spry Data Partners.">
+    <link rel="canonical" href="https://sprydp.com/payer-analyzer">
+    <meta name="author" content="Zack Reeser">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Insurance Payer Profitability Analyzer | Spry Data Partners">
+    <meta property="og:description" content="Upload your claims CSV and see which insurance payers are draining your practice's margin. Free tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Spry Data Partners">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#832B03;--primary-light:#A56F4F;--cream:#FCF6F0;--cream-dark:#F5EFE6;--sand:#E5DCCF;--charcoal:#33302C;--gray:#6b7280;--white:#ffffff;--shadow-sm:0 2px 4px rgba(0,0,0,0.06);--green:#166534;--green-bg:#dcfce7;--yellow:#854d0e;--yellow-bg:#fef9c3;--red:#991b1b;--red-bg:#fee2e2}
+        html{scroll-behavior:smooth}
+        body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;background-color:var(--cream-dark);color:var(--charcoal);line-height:1.6}
+        h1,h2,h3{font-family:'Fraunces',Georgia,serif}
+        .container{max-width:1140px;margin:0 auto;padding:0 1.5rem}
+        .container-narrow{max-width:820px;margin:0 auto;padding:0 1.5rem}
+
+        /* Nav */
+        header{background-color:var(--cream);box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:100}
+        nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;max-width:1140px;margin:0 auto}
+        .logo{font-family:'Fraunces',Georgia,serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:.6rem}
+        .logo svg{width:36px;height:36px}
+        .logo-text{display:flex;flex-direction:column}
+        .logo-name{font-family:'Fraunces',Georgia,serif;font-size:1.3rem;font-weight:700;line-height:1.2}
+        .logo-tagline{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:500;color:var(--gray);line-height:1.2}
+        nav ul{display:flex;list-style:none;gap:2rem;align-items:center}
+        nav a{text-decoration:none;color:var(--gray);font-size:.95rem;font-weight:500;transition:color .2s}
+        nav a:hover{color:var(--primary)}
+        .nav-cta{background:var(--primary);color:var(--white)!important;padding:.6rem 1.25rem;border-radius:6px;font-weight:600}
+        .nav-cta:hover{background:var(--primary-light)!important}
+        .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+        .mobile-menu-btn svg{width:24px;height:24px;color:var(--charcoal)}
+
+        /* Hero */
+        .hero{background:linear-gradient(135deg,var(--cream) 0%,var(--sand) 100%);padding:4rem 0 3rem;text-align:center}
+        .hero-badge{display:inline-block;background:var(--primary);color:var(--white);font-size:.8rem;font-weight:600;padding:.3rem .85rem;border-radius:20px;margin-bottom:1.25rem;letter-spacing:.3px}
+        .hero h1{font-size:2.5rem;line-height:1.2;color:var(--charcoal);margin-bottom:1rem;max-width:700px;margin-left:auto;margin-right:auto}
+        .hero p{font-size:1.1rem;color:var(--gray);max-width:580px;margin:0 auto 1.5rem;line-height:1.7}
+        .privacy-note{display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;color:var(--gray);background:var(--cream-dark);border:1px solid var(--sand);padding:.4rem .9rem;border-radius:20px}
+        .privacy-note svg{width:14px;height:14px;color:var(--primary);flex-shrink:0}
+
+        /* Tool area */
+        .tool-section{padding:3rem 0 5rem}
+
+        /* Steps */
+        .step{background:var(--white);border:1px solid var(--sand);border-radius:12px;padding:2rem;margin-bottom:1.5rem;box-shadow:var(--shadow-sm)}
+        .step-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
+        .step-number{width:36px;height:36px;border-radius:50%;background:var(--primary);color:var(--white);font-family:'Fraunces',serif;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .step-header h2{font-size:1.35rem;color:var(--charcoal)}
+        .step-desc{color:var(--gray);font-size:.95rem;margin-bottom:1.5rem;line-height:1.6}
+
+        /* Upload zone */
+        .upload-zone{border:2px dashed var(--sand);border-radius:10px;padding:2.5rem;text-align:center;cursor:pointer;transition:all .2s;background:var(--cream-dark)}
+        .upload-zone:hover,.upload-zone.drag-over{border-color:var(--primary);background:var(--cream)}
+        .upload-zone svg{width:40px;height:40px;color:var(--primary-light);margin-bottom:.75rem}
+        .upload-zone p{color:var(--gray);font-size:.95rem}
+        .upload-zone strong{color:var(--primary);cursor:pointer}
+        #file-input{display:none}
+        .file-selected{color:var(--primary);font-weight:600;font-size:.95rem;margin-top:.75rem}
+
+        /* Column mapping */
+        .preview-table-wrap{overflow-x:auto;margin-bottom:1.5rem;border-radius:8px;border:1px solid var(--sand)}
+        .preview-table{width:100%;border-collapse:collapse;font-size:.85rem}
+        .preview-table th{background:var(--charcoal);color:var(--white);padding:.6rem 1rem;text-align:left;white-space:nowrap}
+        .preview-table td{padding:.5rem 1rem;border-bottom:1px solid var(--sand);color:var(--charcoal);white-space:nowrap}
+        .preview-table tr:last-child td{border-bottom:none}
+        .preview-table tr:nth-child(even) td{background:var(--cream-dark)}
+
+        .map-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+        .map-field label{display:block;font-size:.85rem;font-weight:600;color:var(--charcoal);margin-bottom:.4rem}
+        .map-field .field-note{font-size:.78rem;color:var(--gray);font-weight:400;margin-left:.3rem}
+        .map-field select{width:100%;padding:.6rem .9rem;border:1px solid var(--sand);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--charcoal);background:var(--white);cursor:pointer}
+        .map-field select:focus{outline:none;border-color:var(--primary)}
+
+        /* Buttons */
+        .btn{display:inline-block;padding:.8rem 1.75rem;border-radius:6px;font-weight:600;font-size:1rem;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .2s}
+        .btn-primary{background:var(--primary);color:var(--white)}
+        .btn-primary:hover{background:var(--primary-light)}
+        .btn-secondary{background:var(--cream-dark);color:var(--charcoal);border:1px solid var(--sand)}
+        .btn-secondary:hover{background:var(--sand)}
+        .btn:disabled{opacity:.5;cursor:not-allowed}
+
+        /* Results */
+        .results-hidden{display:none}
+
+        /* Summary cards */
+        .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+        .summary-card{background:var(--white);border:1px solid var(--sand);border-radius:10px;padding:1.25rem;box-shadow:var(--shadow-sm)}
+        .summary-card .label{font-size:.8rem;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.4px;margin-bottom:.4rem}
+        .summary-card .value{font-size:1.6rem;font-family:'Fraunces',serif;font-weight:700;color:var(--charcoal);line-height:1.1}
+        .summary-card .sub{font-size:.8rem;color:var(--gray);margin-top:.25rem}
+        .summary-card.highlight{border-color:var(--primary);background:var(--cream)}
+
+        /* Chart */
+        .chart-wrap{background:var(--white);border:1px solid var(--sand);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;box-shadow:var(--shadow-sm)}
+        .chart-wrap h3{font-size:1.15rem;color:var(--charcoal);margin-bottom:1.25rem}
+        .chart-container{position:relative;height:300px}
+
+        /* Results table */
+        .results-table-wrap{background:var(--white);border:1px solid var(--sand);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:1.5rem}
+        .results-table-wrap h3{font-size:1.15rem;color:var(--charcoal);padding:1.25rem 1.5rem;border-bottom:1px solid var(--sand)}
+        .results-table{width:100%;border-collapse:collapse}
+        .results-table th{background:var(--cream-dark);padding:.75rem 1.25rem;text-align:left;font-size:.82rem;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.4px;cursor:pointer;user-select:none;white-space:nowrap}
+        .results-table th:hover{color:var(--primary)}
+        .results-table th.sorted{color:var(--primary)}
+        .results-table th .sort-arrow{margin-left:.3rem;opacity:.5}
+        .results-table th.sorted .sort-arrow{opacity:1}
+        .results-table td{padding:.75rem 1.25rem;border-bottom:1px solid var(--sand);font-size:.93rem;color:var(--charcoal)}
+        .results-table tr:last-child td{border-bottom:none}
+        .results-table tr:hover td{background:var(--cream-dark)}
+        .rate-badge{display:inline-block;padding:.2rem .6rem;border-radius:4px;font-size:.8rem;font-weight:600}
+        .rate-good{background:var(--green-bg);color:var(--green)}
+        .rate-mid{background:var(--yellow-bg);color:var(--yellow)}
+        .rate-bad{background:var(--red-bg);color:var(--red)}
+        .rank-1{font-weight:700;color:var(--green)}
+        .rank-last{font-weight:700;color:var(--red)}
+
+        /* Insight box */
+        .insight-box{background:var(--cream);border:1px solid var(--sand);border-left:4px solid var(--primary);border-radius:0 10px 10px 0;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+        .insight-box h4{font-size:1rem;color:var(--primary);margin-bottom:.5rem;font-family:'Fraunces',serif}
+        .insight-box p{font-size:.93rem;color:var(--charcoal);line-height:1.7;margin-bottom:.5rem}
+        .insight-box p:last-child{margin-bottom:0}
+
+        /* CTA */
+        .tool-cta{background:var(--charcoal);color:var(--white);padding:3rem;border-radius:12px;text-align:center;margin-top:2rem}
+        .tool-cta h3{font-size:1.5rem;margin-bottom:.75rem;color:var(--white)}
+        .tool-cta p{color:rgba(255,255,255,.85);margin-bottom:1.5rem;font-size:1rem}
+        .tool-cta .btn-white{background:var(--white);color:var(--primary);padding:.875rem 1.75rem;border-radius:6px;font-weight:600;text-decoration:none;display:inline-block;transition:all .2s}
+        .tool-cta .btn-white:hover{background:var(--cream);transform:translateY(-1px)}
+
+        /* Error */
+        .error-msg{background:#fee2e2;color:#991b1b;border:1px solid #fecaca;border-radius:8px;padding:.75rem 1rem;font-size:.9rem;margin-top:.75rem;display:none}
+
+        footer{background:var(--charcoal);color:rgba(255,255,255,.8);padding:2rem 0;text-align:center}
+        footer p{font-size:.9rem;color:rgba(255,255,255,.6)}
+        footer a{color:rgba(255,255,255,.7);text-decoration:none}
+
+        @media(max-width:768px){
+            nav ul{display:none}
+            nav ul.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--cream);padding:1rem 1.5rem;box-shadow:var(--shadow-sm);gap:1rem}
+            .mobile-menu-btn{display:block}
+            .hero h1{font-size:1.8rem}
+            .summary-grid{grid-template-columns:repeat(2,1fr)}
+            .map-grid{grid-template-columns:1fr}
+            .chart-container{height:220px}
+        }
+        @media(max-width:480px){
+            .summary-grid{grid-template-columns:1fr 1fr}
+            .hero h1{font-size:1.5rem}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <a href="/" class="logo">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="peakGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#832B03;stop-opacity:1"/><stop offset="100%" style="stop-color:#A56F4F;stop-opacity:0.8"/></linearGradient></defs><circle cx="200" cy="200" r="190" fill="none" stroke="#832B03" stroke-width="2"/><polygon points="80,300 200,80 320,300" fill="url(#peakGradient)"/><polygon points="200,120 170,220 230,220" fill="#FCF6F0"/><polygon points="200,80 195,100 205,100" fill="#FCF6F0"/></svg>
+                <div class="logo-text"><span class="logo-name">Spry Data Partners</span><span class="logo-tagline">Data Intelligence for Growing Businesses</span></div>
+            </a>
+            <ul id="nav-menu">
+                <li><a href="/#industries">Industries</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/#pricing">Pricing</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" rel="noopener" class="nav-cta">Free Consultation</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="container">
+                <div class="hero-badge">Free Tool</div>
+                <h1>Insurance Payer Profitability Analyzer</h1>
+                <p>Upload your claims data and see which payers are draining your margin. Takes 60 seconds. No signup required.</p>
+                <div class="privacy-note">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    Your data never leaves your browser. Nothing is uploaded or stored.
+                </div>
+            </div>
+        </div>
+
+        <div class="tool-section">
+            <div class="container-narrow">
+
+                <!-- Step 1: Upload -->
+                <div class="step" id="step-1">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h2>Upload Your Claims CSV</h2>
+                    </div>
+                    <p class="step-desc">Export claims or insurance payment data from Dentrix, Eaglesoft, Open Dental, or any practice management system. Any CSV with a payer name and dollar amounts works.</p>
+                    <div class="upload-zone" id="upload-zone">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                        <p>Drag and drop your CSV here, or <strong onclick="document.getElementById('file-input').click()">browse to upload</strong></p>
+                        <p style="font-size:.8rem;margin-top:.5rem;color:#9ca3af">CSV files only</p>
+                    </div>
+                    <input type="file" id="file-input" accept=".csv">
+                    <div id="file-name" class="file-selected" style="display:none"></div>
+                    <div class="error-msg" id="upload-error">Please upload a valid CSV file.</div>
+                </div>
+
+                <!-- Step 2: Map Columns -->
+                <div class="step results-hidden" id="step-2">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h2>Map Your Columns</h2>
+                    </div>
+                    <p class="step-desc">Match your CSV columns to the fields below. We detected your column headers from the first row.</p>
+
+                    <div class="preview-table-wrap">
+                        <table class="preview-table" id="preview-table"></table>
+                    </div>
+
+                    <div class="map-grid">
+                        <div class="map-field">
+                            <label>Payer / Insurance Name <span class="field-note">required</span></label>
+                            <select id="col-payer"><option value="">— Select column —</option></select>
+                        </div>
+                        <div class="map-field">
+                            <label>Amount Billed / Charged <span class="field-note">required</span></label>
+                            <select id="col-billed"><option value="">— Select column —</option></select>
+                        </div>
+                        <div class="map-field">
+                            <label>Amount Collected / Paid <span class="field-note">required</span></label>
+                            <select id="col-collected"><option value="">— Select column —</option></select>
+                        </div>
+                        <div class="map-field">
+                            <label>Claim Status <span class="field-note">optional — for denial rate</span></label>
+                            <select id="col-status"><option value="">— Not available —</option></select>
+                        </div>
+                    </div>
+                    <div class="error-msg" id="map-error">Please select Payer Name, Amount Billed, and Amount Collected.</div>
+                    <div style="display:flex;gap:1rem;align-items:center">
+                        <button class="btn btn-primary" id="analyze-btn" onclick="runAnalysis()">Analyze My Data</button>
+                        <button class="btn btn-secondary" onclick="resetTool()">Start Over</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Results -->
+                <div id="step-3" class="results-hidden">
+                    <div class="step" style="border-color:var(--primary)">
+                        <div class="step-header">
+                            <div class="step-number">3</div>
+                            <h2>Your Payer Profitability Report</h2>
+                        </div>
+
+                        <div class="summary-grid" id="summary-cards"></div>
+                    </div>
+
+                    <div class="insight-box" id="insight-box"></div>
+
+                    <div class="chart-wrap">
+                        <h3>Collection Rate by Payer</h3>
+                        <div class="chart-container"><canvas id="payer-chart"></canvas></div>
+                    </div>
+
+                    <div class="results-table-wrap">
+                        <h3>Full Payer Breakdown</h3>
+                        <div style="overflow-x:auto">
+                            <table class="results-table" id="results-table">
+                                <thead>
+                                    <tr>
+                                        <th onclick="sortTable('rank')" id="th-rank">Rank <span class="sort-arrow">↕</span></th>
+                                        <th onclick="sortTable('payer')" id="th-payer">Payer <span class="sort-arrow">↕</span></th>
+                                        <th onclick="sortTable('billed')" id="th-billed">Total Billed <span class="sort-arrow">↕</span></th>
+                                        <th onclick="sortTable('collected')" id="th-collected">Total Collected <span class="sort-arrow">↕</span></th>
+                                        <th onclick="sortTable('writeoff')" id="th-writeoff">Write-offs <span class="sort-arrow">↕</span></th>
+                                        <th onclick="sortTable('rate')" id="th-rate" class="sorted">Collection Rate <span class="sort-arrow">↑</span></th>
+                                        <th id="th-denials" style="display:none" onclick="sortTable('denials')">Denial Rate <span class="sort-arrow">↕</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="results-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:1rem;margin-bottom:2rem">
+                        <button class="btn btn-secondary" onclick="resetTool()">Analyze Another File</button>
+                    </div>
+
+                    <div class="tool-cta">
+                        <h3>Want to Dig Deeper Into Your Numbers?</h3>
+                        <p>This tool shows you where the problems are. A 30-minute call shows you what to do about them, including how to approach contract renegotiations with data behind you.</p>
+                        <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" rel="noopener" class="btn-white">Schedule a Free Consultation</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Spry Data Partners. <a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="https://calendar.app.google/3P7YMBTP3zRdWavq6" target="_blank" rel="noopener">Free Consultation</a></p>
+        </div>
+    </footer>
+
+    <script>
+    // ─── State ───────────────────────────────────────────────────────────
+    let parsedData = [];
+    let headers = [];
+    let analysisResults = [];
+    let currentSort = {col:'rate', dir:'asc'};
+    let chartInstance = null;
+    let hasDenials = false;
+
+    // ─── CSV Parser ───────────────────────────────────────────────────────
+    function parseCSV(text) {
+        const lines = text.trim().split(/\r?\n/);
+        if (lines.length < 2) return null;
+        const parse = line => {
+            const cols = [];
+            let cur = '', inQ = false;
+            for (let i = 0; i < line.length; i++) {
+                const c = line[i];
+                if (c === '"') { inQ = !inQ; continue; }
+                if (c === ',' && !inQ) { cols.push(cur.trim()); cur = ''; continue; }
+                cur += c;
+            }
+            cols.push(cur.trim());
+            return cols;
+        };
+        const hdrs = parse(lines[0]);
+        const rows = lines.slice(1).map(l => {
+            const vals = parse(l);
+            const obj = {};
+            hdrs.forEach((h, i) => obj[h] = vals[i] || '');
+            return obj;
+        }).filter(r => Object.values(r).some(v => v !== ''));
+        return { headers: hdrs, rows };
+    }
+
+    function parseMoney(val) {
+        if (!val) return 0;
+        const n = parseFloat(String(val).replace(/[$,\s]/g, ''));
+        return isNaN(n) ? 0 : n;
+    }
+
+    function fmt$(n) {
+        return '$' + n.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
+    }
+
+    function fmtPct(n) {
+        return (n * 100).toFixed(1) + '%';
+    }
+
+    // ─── File Upload ──────────────────────────────────────────────────────
+    const zone = document.getElementById('upload-zone');
+    const fileInput = document.getElementById('file-input');
+
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+    zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('drag-over'); handleFile(e.dataTransfer.files[0]); });
+    zone.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', e => handleFile(e.target.files[0]));
+
+    function handleFile(file) {
+        if (!file || !file.name.endsWith('.csv')) {
+            document.getElementById('upload-error').style.display = 'block';
+            return;
+        }
+        document.getElementById('upload-error').style.display = 'none';
+        const reader = new FileReader();
+        reader.onload = e => {
+            const result = parseCSV(e.target.result);
+            if (!result || result.rows.length === 0) {
+                document.getElementById('upload-error').style.display = 'block';
+                document.getElementById('upload-error').textContent = 'Could not read this CSV. Make sure it has a header row and at least one data row.';
+                return;
+            }
+            parsedData = result.rows;
+            headers = result.headers;
+            document.getElementById('file-name').textContent = '✓ ' + file.name + ' (' + result.rows.length.toLocaleString() + ' rows loaded)';
+            document.getElementById('file-name').style.display = 'block';
+            showStep2();
+        };
+        reader.readAsText(file);
+    }
+
+    function showStep2() {
+        buildPreview();
+        buildColumnSelects();
+        document.getElementById('step-2').classList.remove('results-hidden');
+        document.getElementById('step-2').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    function buildPreview() {
+        const preview = parsedData.slice(0, 3);
+        const tbl = document.getElementById('preview-table');
+        const thead = '<thead><tr>' + headers.map(h => '<th>' + h + '</th>').join('') + '</tr></thead>';
+        const tbody = '<tbody>' + preview.map(row =>
+            '<tr>' + headers.map(h => '<td>' + (row[h] || '') + '</td>').join('') + '</tr>'
+        ).join('') + '</tbody>';
+        tbl.innerHTML = thead + tbody;
+    }
+
+    function buildColumnSelects() {
+        const opts = '<option value="">— Select column —</option>' + headers.map(h => '<option value="' + h + '">' + h + '</option>').join('');
+        const optsOpt = '<option value="">— Not available —</option>' + headers.map(h => '<option value="' + h + '">' + h + '</option>').join('');
+        document.getElementById('col-payer').innerHTML = opts;
+        document.getElementById('col-billed').innerHTML = opts;
+        document.getElementById('col-collected').innerHTML = opts;
+        document.getElementById('col-status').innerHTML = optsOpt;
+
+        // Auto-detect common column names
+        const lower = h => h.toLowerCase();
+        headers.forEach(h => {
+            const l = lower(h);
+            if (!document.getElementById('col-payer').value && (l.includes('payer') || l.includes('insurance') || l.includes('carrier') || l.includes('plan')))
+                document.getElementById('col-payer').value = h;
+            if (!document.getElementById('col-billed').value && (l.includes('billed') || l.includes('charged') || l.includes('submitted') || l.includes('fee')))
+                document.getElementById('col-billed').value = h;
+            if (!document.getElementById('col-collected').value && (l.includes('collect') || l.includes('paid') || l.includes('payment') || l.includes('received')))
+                document.getElementById('col-collected').value = h;
+            if (!document.getElementById('col-status').value && (l.includes('status') || l.includes('denial') || l.includes('result')))
+                document.getElementById('col-status').value = h;
+        });
+    }
+
+    // ─── Analysis ─────────────────────────────────────────────────────────
+    function runAnalysis() {
+        const colPayer = document.getElementById('col-payer').value;
+        const colBilled = document.getElementById('col-billed').value;
+        const colCollected = document.getElementById('col-collected').value;
+        const colStatus = document.getElementById('col-status').value;
+        const errEl = document.getElementById('map-error');
+
+        if (!colPayer || !colBilled || !colCollected) {
+            errEl.textContent = 'Please select Payer Name, Amount Billed, and Amount Collected.';
+            errEl.style.display = 'block';
+            return;
+        }
+        errEl.style.display = 'none';
+
+        // Aggregate by payer
+        const map = {};
+        parsedData.forEach(row => {
+            const payer = (row[colPayer] || '').trim() || 'Unknown';
+            const billed = parseMoney(row[colBilled]);
+            const collected = parseMoney(row[colCollected]);
+            if (!map[payer]) map[payer] = {payer, billed:0, collected:0, claims:0, denials:0};
+            map[payer].billed += billed;
+            map[payer].collected += collected;
+            map[payer].claims++;
+            if (colStatus) {
+                const s = (row[colStatus] || '').toLowerCase();
+                if (s.includes('den') || s === 'rejected' || s === 'refused' || s === 'no') map[payer].denials++;
+            }
+        });
+
+        hasDenials = !!colStatus;
+        analysisResults = Object.values(map)
+            .filter(p => p.billed > 0)
+            .map(p => ({
+                ...p,
+                writeoff: p.billed - p.collected,
+                rate: p.billed > 0 ? p.collected / p.billed : 0,
+                denialRate: p.claims > 0 ? p.denials / p.claims : 0
+            }))
+            .sort((a,b) => a.rate - b.rate)
+            .map((p, i, arr) => ({...p, rank: i + 1}));
+
+        showResults();
+    }
+
+    function showResults() {
+        document.getElementById('step-3').classList.remove('results-hidden');
+        document.getElementById('step-3').scrollIntoView({behavior:'smooth', block:'start'});
+        renderSummaryCards();
+        renderInsight();
+        renderChart();
+        renderTable();
+    }
+
+    function renderSummaryCards() {
+        const total = analysisResults.reduce((a,p) => ({billed:a.billed+p.billed, collected:a.collected+p.collected}), {billed:0,collected:0});
+        const overallRate = total.billed > 0 ? total.collected / total.billed : 0;
+        const best = analysisResults[analysisResults.length - 1];
+        const worst = analysisResults[0];
+        const totalWriteoff = total.billed - total.collected;
+
+        document.getElementById('summary-cards').innerHTML = `
+            <div class="summary-card highlight">
+                <div class="label">Overall Collection Rate</div>
+                <div class="value">${fmtPct(overallRate)}</div>
+                <div class="sub">Across ${analysisResults.length} payers</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Total Write-offs</div>
+                <div class="value">${fmt$(totalWriteoff)}</div>
+                <div class="sub">from ${fmt$(total.billed)} billed</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Best Payer</div>
+                <div class="value" style="font-size:1.1rem;padding-top:.2rem">${best.payer}</div>
+                <div class="sub">${fmtPct(best.rate)} collection rate</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Worst Payer</div>
+                <div class="value" style="font-size:1.1rem;padding-top:.2rem">${worst.payer}</div>
+                <div class="sub">${fmtPct(worst.rate)} collection rate</div>
+            </div>
+        `;
+    }
+
+    function renderInsight() {
+        const worst = analysisResults[0];
+        const best = analysisResults[analysisResults.length - 1];
+        const spread = best.rate - worst.rate;
+        const lowPayers = analysisResults.filter(p => p.rate < 0.60);
+        let text = '';
+
+        if (spread > 0.15) {
+            text += `<p>There is a <strong>${fmtPct(spread)} spread</strong> between your best and worst payer. That gap represents real money on every procedure billed to the lower-performing carriers.</p>`;
+        }
+        if (lowPayers.length > 0) {
+            const names = lowPayers.map(p => p.payer).join(', ');
+            text += `<p><strong>${lowPayers.length} payer${lowPayers.length > 1 ? 's' : ''} below 60% collection rate:</strong> ${names}. These contracts are candidates for renegotiation or a closer look at denial patterns.</p>`;
+        }
+        if (!text) {
+            text = `<p>Your payer mix looks relatively balanced. Focus on the spread between your top and bottom performers, and check whether any contracts have auto-renewed without a fee schedule review in the last two years.</p>`;
+        }
+        text += `<p style="margin-top:.5rem;font-size:.85rem;color:var(--gray)">Note: Collection rate = amount collected / amount billed. Industry benchmark is typically 65–75% depending on payer mix.</p>`;
+
+        document.getElementById('insight-box').innerHTML = '<h4>What This Tells You</h4>' + text;
+    }
+
+    function renderChart() {
+        if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+        const sorted = [...analysisResults].sort((a,b) => a.rate - b.rate);
+        const labels = sorted.map(p => p.payer.length > 25 ? p.payer.substring(0,23) + '...' : p.payer);
+        const rates = sorted.map(p => parseFloat((p.rate * 100).toFixed(1)));
+        const colors = rates.map(r => r >= 70 ? '#166534' : r >= 55 ? '#854d0e' : '#991b1b');
+        const bgColors = rates.map(r => r >= 70 ? '#dcfce7' : r >= 55 ? '#fef9c3' : '#fee2e2');
+
+        const ctx = document.getElementById('payer-chart').getContext('2d');
+        chartInstance = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels,
+                datasets: [{
+                    label: 'Collection Rate %',
+                    data: rates,
+                    backgroundColor: bgColors,
+                    borderColor: colors,
+                    borderWidth: 1.5,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {display: false},
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ' ' + ctx.parsed.x.toFixed(1) + '%'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        min: 0,
+                        max: 100,
+                        grid: {color:'#f3f4f6'},
+                        ticks: {callback: v => v + '%', font:{size:11}}
+                    },
+                    y: {
+                        grid: {display:false},
+                        ticks: {font:{size:11}}
+                    }
+                }
+            }
+        });
+    }
+
+    function renderTable() {
+        if (hasDenials) {
+            document.getElementById('th-denials').style.display = '';
+        }
+        const sorted = getSorted();
+        const total = sorted.length;
+        document.getElementById('results-body').innerHTML = sorted.map((p, i) => {
+            const rateClass = p.rate >= 0.70 ? 'rate-good' : p.rate >= 0.55 ? 'rate-mid' : 'rate-bad';
+            const rankClass = p.rank === 1 ? 'rank-last' : p.rank === total ? 'rank-1' : '';
+            const denialCell = hasDenials ? `<td>${fmtPct(p.denialRate)}</td>` : '';
+            return `<tr>
+                <td class="${rankClass}">#${p.rank}</td>
+                <td><strong>${p.payer}</strong></td>
+                <td>${fmt$(p.billed)}</td>
+                <td>${fmt$(p.collected)}</td>
+                <td>${fmt$(p.writeoff)}</td>
+                <td><span class="rate-badge ${rateClass}">${fmtPct(p.rate)}</span></td>
+                ${denialCell}
+            </tr>`;
+        }).join('');
+    }
+
+    function getSorted() {
+        const col = currentSort.col;
+        const dir = currentSort.dir === 'asc' ? 1 : -1;
+        return [...analysisResults].sort((a,b) => {
+            if (col === 'payer') return dir * a.payer.localeCompare(b.payer);
+            if (col === 'rank') return dir * (a.rank - b.rank);
+            if (col === 'billed') return dir * (a.billed - b.billed);
+            if (col === 'collected') return dir * (a.collected - b.collected);
+            if (col === 'writeoff') return dir * (a.writeoff - b.writeoff);
+            if (col === 'rate') return dir * (a.rate - b.rate);
+            if (col === 'denials') return dir * (a.denialRate - b.denialRate);
+            return 0;
+        });
+    }
+
+    function sortTable(col) {
+        if (currentSort.col === col) {
+            currentSort.dir = currentSort.dir === 'asc' ? 'desc' : 'asc';
+        } else {
+            currentSort.col = col;
+            currentSort.dir = 'asc';
+        }
+        document.querySelectorAll('.results-table th').forEach(th => {
+            th.classList.remove('sorted');
+            const arrow = th.querySelector('.sort-arrow');
+            if (arrow) arrow.textContent = '↕';
+        });
+        const thEl = document.getElementById('th-' + col);
+        if (thEl) {
+            thEl.classList.add('sorted');
+            const arrow = thEl.querySelector('.sort-arrow');
+            if (arrow) arrow.textContent = currentSort.dir === 'asc' ? '↑' : '↓';
+        }
+        renderTable();
+    }
+
+    function resetTool() {
+        parsedData = [];
+        headers = [];
+        analysisResults = [];
+        currentSort = {col:'rate', dir:'asc'};
+        if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+        document.getElementById('file-input').value = '';
+        document.getElementById('file-name').style.display = 'none';
+        document.getElementById('upload-error').style.display = 'none';
+        document.getElementById('step-2').classList.add('results-hidden');
+        document.getElementById('step-3').classList.add('results-hidden');
+        document.getElementById('step-1').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    // Nav toggle
+    const mb = document.querySelector('.mobile-menu-btn'), nm = document.getElementById('nav-menu');
+    if (mb && nm) {
+        mb.addEventListener('click', function() {
+            const e = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !e);
+            nm.classList.toggle('active');
+        });
+        nm.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+            nm.classList.remove('active');
+            mb.setAttribute('aria-expanded', 'false');
+        }));
+    }
+    </script>
+</body>
+</html>
