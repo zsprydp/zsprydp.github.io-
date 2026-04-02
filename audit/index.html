@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Clarity Audit | Spry Data Partners</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #832B03;
+      --primary-light: #A56F4F;
+      --primary-dark: #5c1e02;
+      --cream: #FCF6F0;
+      --cream-dark: #F5EFE6;
+      --sand: #E5DCCF;
+      --charcoal: #33302C;
+      --gray: #6b7280;
+      --white: #ffffff;
+      --font-heading: 'Fraunces', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); font-size: 16px; line-height: 1.6; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--sand);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .logo svg { width: 36px; height: 36px; }
+    .logo-text { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--primary); }
+    .header-badge {
+      background: var(--cream-dark);
+      border: 1px solid var(--sand);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 4rem 2rem 3.5rem;
+    }
+    #hero .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 0.75rem;
+    }
+    #hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    #hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 560px;
+      margin: 0 auto 1.75rem;
+    }
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .hero-badge {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ── MAIN WRAPPER ── */
+    .main-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── PROGRESS ── */
+    .progress-container { margin-bottom: 2rem; }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+    .progress-label { font-size: 0.85rem; font-weight: 600; color: var(--primary); }
+    .progress-count { font-size: 0.8rem; color: var(--gray); }
+    .progress-track {
+      background: var(--sand);
+      border-radius: 99px;
+      height: 6px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      height: 100%;
+      border-radius: 99px;
+      transition: width 0.4s ease;
+    }
+    .step-dots {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.6rem;
+    }
+    .step-dot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      flex: 1;
+    }
+    .step-dot-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--sand);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--gray);
+      transition: all 0.3s;
+    }
+    .step-dot.active .step-dot-circle { border-color: var(--primary); background: var(--primary); color: var(--white); }
+    .step-dot.done .step-dot-circle { border-color: var(--primary); background: var(--primary); color: var(--white); }
+    .step-dot-label { font-size: 0.68rem; color: var(--gray); text-align: center; line-height: 1.2; }
+    .step-dot.active .step-dot-label { color: var(--primary); font-weight: 600; }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 2.25rem;
+      border: 1px solid var(--sand);
+    }
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+    .step-heading {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+    .step-subheading {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    /* ── FORM FIELDS ── */
+    .field-group { margin-bottom: 1.5rem; }
+    .field-group:last-of-type { margin-bottom: 0; }
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+    label .optional { font-weight: 400; color: var(--gray); font-size: 0.8rem; }
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1.5px solid var(--sand);
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      background: var(--cream);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    select:focus,
+    textarea:focus { border-color: var(--primary); background: var(--white); }
+    textarea { resize: vertical; min-height: 90px; }
+    .field-hint { font-size: 0.78rem; color: var(--gray); margin-top: 0.3rem; }
+    .field-error { font-size: 0.78rem; color: #c0392b; margin-top: 0.3rem; display: none; }
+    .field-error.visible { display: block; }
+
+    /* Checkbox cards */
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 0.6rem;
+    }
+    .checkbox-card {
+      position: relative;
+      cursor: pointer;
+    }
+    .checkbox-card input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .checkbox-card-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 0.85rem;
+      border: 1.5px solid var(--sand);
+      border-radius: 6px;
+      background: var(--cream);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .checkbox-card input:checked + .checkbox-card-inner {
+      border-color: var(--primary);
+      background: rgba(131,43,3,0.06);
+      color: var(--primary);
+    }
+    .checkbox-card-inner .check-box {
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--sand);
+      border-radius: 3px;
+      flex-shrink: 0;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .checkbox-card input:checked + .checkbox-card-inner .check-box {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    .checkbox-card input:checked + .checkbox-card-inner .check-box::after {
+      content: '✓';
+      color: white;
+      font-size: 10px;
+      line-height: 1;
+    }
+
+    /* Radio cards */
+    .radio-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .radio-card { position: relative; cursor: pointer; }
+    .radio-card input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .radio-card-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--sand);
+      border-radius: 6px;
+      background: var(--cream);
+      font-size: 0.88rem;
+      color: var(--charcoal);
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .radio-card input:checked + .radio-card-inner {
+      border-color: var(--primary);
+      background: rgba(131,43,3,0.06);
+    }
+    .radio-dot {
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--sand);
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .radio-card input:checked + .radio-card-inner .radio-dot {
+      border-color: var(--primary);
+      background: var(--primary);
+      box-shadow: inset 0 0 0 3px white;
+    }
+    .radio-card-label { font-weight: 500; }
+    .radio-card-desc { font-size: 0.78rem; color: var(--gray); margin-left: auto; }
+
+    /* Confidence scale */
+    .confidence-scale {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .conf-option { position: relative; flex: 1; cursor: pointer; }
+    .conf-option input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .conf-option-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.6rem 0.4rem;
+      border: 1.5px solid var(--sand);
+      border-radius: 6px;
+      background: var(--cream);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gray);
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .conf-option input:checked + .conf-option-inner {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: var(--white);
+    }
+    .conf-number { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .conf-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.4rem;
+      font-size: 0.72rem;
+      color: var(--gray);
+    }
+
+    /* Two-column layout for some fields */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 500px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ── NAVIGATION BUTTONS ── */
+    .form-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--cream-dark);
+    }
+    .btn {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.8rem 1.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--sand);
+    }
+    .btn-secondary:hover { border-color: var(--primary); }
+    .btn-large {
+      font-size: 1rem;
+      padding: 0.95rem 2.25rem;
+    }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* ── ANALYSIS SCREEN ── */
+    #analysis-screen {
+      display: none;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 3rem 2.25rem;
+      border: 1px solid var(--sand);
+      text-align: center;
+    }
+    .analysis-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(131,43,3,0.3); }
+      50% { box-shadow: 0 0 0 16px rgba(131,43,3,0); }
+    }
+    .analysis-icon svg { width: 32px; height: 32px; color: white; }
+    #analysis-screen h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    #analysis-screen p { color: var(--gray); margin-bottom: 2rem; }
+    .analysis-bar-track {
+      background: var(--sand);
+      border-radius: 99px;
+      height: 8px;
+      margin: 0 auto 2rem;
+      max-width: 400px;
+      overflow: hidden;
+    }
+    .analysis-bar-fill {
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      height: 100%;
+      border-radius: 99px;
+      width: 0%;
+      transition: width 0.6s ease;
+    }
+    .analysis-steps { max-width: 380px; margin: 0 auto; text-align: left; }
+    .analysis-step {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      font-size: 0.9rem;
+      color: var(--gray);
+      opacity: 0.4;
+      transition: opacity 0.4s;
+    }
+    .analysis-step.active { opacity: 1; color: var(--charcoal); }
+    .analysis-step.done { opacity: 1; color: var(--primary); }
+    .analysis-step-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--sand);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      transition: all 0.3s;
+    }
+    .analysis-step.active .analysis-step-dot { border-color: var(--primary); animation: spin 1s linear infinite; }
+    .analysis-step.done .analysis-step-dot { border-color: var(--primary); background: var(--primary); color: white; }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── REPORT ── */
+    #report-container { display: none; }
+    .report-header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: var(--white);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 2.25rem;
+    }
+    .report-header .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-bottom: 0.4rem;
+    }
+    .report-header h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .report-header .meta { font-size: 0.85rem; opacity: 0.8; }
+    .report-body {
+      background: var(--white);
+      border: 1px solid var(--sand);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      overflow: hidden;
+    }
+    .report-section {
+      padding: 2rem 2.25rem;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .report-section:last-child { border-bottom: none; }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-icon {
+      width: 30px;
+      height: 30px;
+      background: rgba(131,43,3,0.1);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .section-icon svg { width: 16px; height: 16px; color: var(--primary); }
+
+    /* Score card */
+    .score-overview {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .score-big {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+      border-radius: 12px;
+      padding: 1.25rem 2rem;
+      text-align: center;
+      min-width: 130px;
+      flex-shrink: 0;
+    }
+    .score-big .score-number {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .score-big .score-denom { font-size: 1rem; opacity: 0.7; }
+    .score-big .score-label { font-size: 0.78rem; opacity: 0.85; margin-top: 0.3rem; }
+    .score-description { flex: 1; min-width: 200px; }
+    .score-description p { font-size: 0.92rem; color: var(--charcoal); line-height: 1.6; }
+    .dimension-bars { display: flex; flex-direction: column; gap: 0.75rem; }
+    .dimension-bar { }
+    .dimension-bar-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: var(--charcoal);
+    }
+    .dimension-bar-track {
+      background: var(--sand);
+      border-radius: 99px;
+      height: 7px;
+      overflow: hidden;
+    }
+    .dimension-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      transition: width 1s ease 0.3s;
+    }
+
+    /* Priority issue cards */
+    .issue-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .issue-card {
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      padding: 1.25rem;
+      background: var(--cream);
+    }
+    .issue-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .issue-number {
+      background: var(--primary);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .issue-name { font-weight: 700; color: var(--charcoal); font-size: 0.95rem; }
+    .issue-desc { font-size: 0.87rem; color: var(--gray); line-height: 1.55; margin-bottom: 0.6rem; }
+    .issue-impact {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(131,43,3,0.08);
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    /* Quick wins */
+    .quick-wins { display: flex; flex-direction: column; gap: 0.75rem; }
+    .quick-win {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      padding: 1rem 1.1rem;
+      background: var(--cream);
+      border-radius: 8px;
+      border: 1px solid var(--sand);
+    }
+    .win-icon {
+      background: rgba(131,43,3,0.1);
+      color: var(--primary);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+    .win-content { }
+    .win-title { font-weight: 700; font-size: 0.9rem; color: var(--charcoal); margin-bottom: 0.2rem; }
+    .win-desc { font-size: 0.83rem; color: var(--gray); line-height: 1.5; }
+
+    /* Roadmap */
+    .roadmap { display: flex; flex-direction: column; gap: 1rem; }
+    .roadmap-phase {
+      border-left: 3px solid var(--sand);
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .roadmap-phase::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
+      position: absolute;
+      left: -7.5px;
+      top: 4px;
+    }
+    .roadmap-phase-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      margin-bottom: 0.2rem;
+    }
+    .roadmap-phase-title { font-weight: 700; color: var(--charcoal); font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .roadmap-items { list-style: none; }
+    .roadmap-items li {
+      font-size: 0.85rem;
+      color: var(--gray);
+      padding: 0.18rem 0;
+      display: flex;
+      gap: 0.4rem;
+      align-items: baseline;
+    }
+    .roadmap-items li::before { content: '→'; color: var(--primary); font-size: 0.75rem; flex-shrink: 0; }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      text-align: center;
+      border: 1px solid var(--sand);
+      margin-top: 2rem;
+    }
+    .cta-section h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .cta-section p { color: var(--gray); margin-bottom: 1.5rem; font-size: 0.92rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-price {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .cta-price span { font-size: 1rem; font-weight: 400; color: var(--gray); }
+    .cta-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .cta-feature {
+      font-size: 0.8rem;
+      background: var(--white);
+      border: 1px solid var(--sand);
+      border-radius: 4px;
+      padding: 0.3rem 0.7rem;
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .cta-feature::before { content: '✓'; color: var(--primary); font-weight: 700; }
+
+    /* Report actions */
+    .report-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--sand);
+      margin-top: 2rem;
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+
+    /* Print */
+    @media print {
+      header, #hero, .progress-container, .form-nav, .report-actions, .cta-section, footer { display: none !important; }
+      #report-container { display: block !important; }
+      body { background: white; }
+      .report-header { background: #832B03 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    /* Transition */
+    .fade-in { animation: fadeIn 0.4s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">
+    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="17" stroke="#832B03" stroke-width="2"/>
+      <polygon points="18,8 28,26 8,26" fill="#832B03" opacity="0.85"/>
+      <polygon points="18,13 24,24 12,24" fill="#A56F4F" opacity="0.7"/>
+    </svg>
+    <span class="logo-text">Spry Data Partners</span>
+  </a>
+  <span class="header-badge">Data Clarity Audit</span>
+</header>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="eyebrow">Free 5-Day Assessment</div>
+  <h1>Discover What Your Data<br><em>Is Actually Costing You</em></h1>
+  <p>Answer 16 questions. Get a personalized report showing your biggest data gaps, quick wins, and a 90-day roadmap — delivered in 5 business days.</p>
+  <div class="hero-badges">
+    <span class="hero-badge">⏱ 15 min to complete</span>
+    <span class="hero-badge">📊 Personalized report</span>
+    <span class="hero-badge">$750 flat rate</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-wrapper">
+
+  <!-- PROGRESS -->
+  <div class="progress-container" id="progress-container">
+    <div class="progress-header">
+      <span class="progress-label" id="progress-label">Step 1 of 5 — About Your Business</span>
+      <span class="progress-count" id="progress-count">20% complete</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width: 20%"></div>
+    </div>
+    <div class="step-dots">
+      <div class="step-dot active" id="dot-1">
+        <div class="step-dot-circle">1</div>
+        <div class="step-dot-label">Business</div>
+      </div>
+      <div class="step-dot" id="dot-2">
+        <div class="step-dot-circle">2</div>
+        <div class="step-dot-label">Data Today</div>
+      </div>
+      <div class="step-dot" id="dot-3">
+        <div class="step-dot-circle">3</div>
+        <div class="step-dot-label">The Pain</div>
+      </div>
+      <div class="step-dot" id="dot-4">
+        <div class="step-dot-circle">4</div>
+        <div class="step-dot-label">Your Team</div>
+      </div>
+      <div class="step-dot" id="dot-5">
+        <div class="step-dot-circle">5</div>
+        <div class="step-dot-label">Vision</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card" id="form-card">
+
+    <!-- STEP 1: About Your Business -->
+    <div class="form-step active fade-in" id="step-1">
+      <h2 class="step-heading">About Your Business</h2>
+      <p class="step-subheading">Let's start with the basics so we can personalize your report.</p>
+
+      <div class="two-col">
+        <div class="field-group">
+          <label for="firstName">Your First Name</label>
+          <input type="text" id="firstName" placeholder="e.g. Sarah" />
+          <div class="field-error" id="err-firstName">Please enter your name.</div>
+        </div>
+        <div class="field-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@company.com" />
+          <div class="field-error" id="err-email">Please enter a valid email.</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="field-group">
+          <label for="companyName">Company / Organization Name</label>
+          <input type="text" id="companyName" placeholder="e.g. Acme Corp" />
+          <div class="field-error" id="err-companyName">Please enter your company name.</div>
+        </div>
+        <div class="field-group">
+          <label for="teamSize">Team Size</label>
+          <select id="teamSize">
+            <option value="">Select...</option>
+            <option value="1-5">1–5 people</option>
+            <option value="6-15">6–15 people</option>
+            <option value="16-30">16–30 people</option>
+            <option value="31-50">31–50 people</option>
+            <option value="50+">50+ people</option>
+          </select>
+          <div class="field-error" id="err-teamSize">Please select your team size.</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="businessGoals">What are your top 1–3 goals for the next 12 months?</label>
+        <textarea id="businessGoals" placeholder="e.g. Grow revenue by 20%, reduce overhead costs, expand to a new market..."></textarea>
+        <div class="field-hint">Be specific — this shapes the entire report.</div>
+        <div class="field-error" id="err-businessGoals">Please share your goals.</div>
+      </div>
+
+      <div class="form-nav">
+        <span></span>
+        <button class="btn btn-primary" onclick="nextStep()">Next: Your Data Today →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Your Data Today -->
+    <div class="form-step fade-in" id="step-2">
+      <h2 class="step-heading">Your Data Today</h2>
+      <p class="step-subheading">Tell us where your information lives and how you use it.</p>
+
+      <div class="field-group">
+        <label for="softwareTools">What software tools do you currently use to run the business?</label>
+        <textarea id="softwareTools" placeholder="e.g. QuickBooks, Salesforce, Google Sheets, Slack, our industry scheduling software..."></textarea>
+        <div class="field-hint">List everything — accounting, CRM, scheduling, spreadsheets, etc.</div>
+        <div class="field-error" id="err-softwareTools">Please list your tools.</div>
+      </div>
+
+      <div class="field-group">
+        <label>Where does most of your important data live? <span class="optional">(select all that apply)</span></label>
+        <div class="checkbox-grid">
+          <label class="checkbox-card">
+            <input type="checkbox" name="dataLocation" value="spreadsheets" />
+            <div class="checkbox-card-inner"><div class="check-box"></div>Spreadsheets</div>
+          </label>
+          <label class="checkbox-card">
+            <input type="checkbox" name="dataLocation" value="accounting" />
+            <div class="checkbox-card-inner"><div class="check-box"></div>Accounting Software</div>
+          </label>
+          <label class="checkbox-card">
+            <input type="checkbox" name="dataLocation" value="crm" />
+            <div class="checkbox-card-inner"><div class="check-box"></div>CRM System</div>
+          </label>
+          <label class="checkbox-card">
+            <input type="checkbox" name="dataLocation" value="industry-software" />
+            <div class="checkbox-card-inner"><div class="check-box"></div>Industry Software</div>
+          </label>
+          <label class="checkbox-card">
+            <input type="checkbox" name="dataLocation" value="heads" />
+            <div class="checkbox-card-inner"><div class="check-box"></div>People's Heads</div>
+          </label>
+          <label class="checkbox-card">
+            <input type="checkbox" name="dataLocation" value="other" />
+            <div class="checkbox-card-inner"><div class="check-box"></div>Other</div>
+          </label>
+        </div>
+        <div class="field-error" id="err-dataLocation">Please select at least one option.</div>
+      </div>
+
+      <div class="field-group">
+        <label>Do you have any dashboards or regular reports today?</label>
+        <div class="radio-group">
+          <label class="radio-card">
+            <input type="radio" name="currentDashboards" value="yes" />
+            <div class="radio-card-inner"><div class="radio-dot"></div><span class="radio-card-label">Yes — we have automated dashboards</span></div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="currentDashboards" value="sort-of" />
+            <div class="radio-card-inner"><div class="radio-dot"></div><span class="radio-card-label">Sort of — we have spreadsheets someone updates manually</span></div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="currentDashboards" value="no" />
+            <div class="radio-card-inner"><div class="radio-dot"></div><span class="radio-card-label">No — we pull numbers manually when we need them</span></div>
+          </label>
+        </div>
+        <div class="field-error" id="err-currentDashboards">Please select an option.</div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep()">Next: The Pain →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: The Pain -->
+    <div class="form-step fade-in" id="step-3">
+      <h2 class="step-heading">The Pain</h2>
+      <p class="step-subheading">The most valuable part of the audit comes from understanding what hurts most.</p>
+
+      <div class="field-group">
+        <label for="timeSink">What reporting or data task takes the most time on your team each week or month?</label>
+        <textarea id="timeSink" placeholder="e.g. Our office manager spends 4 hours every Friday pulling the weekly sales report from three different systems..."></textarea>
+        <div class="field-hint">Be as specific as possible — time estimates are helpful.</div>
+        <div class="field-error" id="err-timeSink">Please describe your biggest time sink.</div>
+      </div>
+
+      <div class="field-group">
+        <label for="unansweredQuestion">What business question do you wish you could answer instantly but currently can't?</label>
+        <textarea id="unansweredQuestion" placeholder="e.g. Which of our customers are most likely to stop using us in the next 90 days?"></textarea>
+        <div class="field-error" id="err-unansweredQuestion">Please share a question you can't currently answer.</div>
+      </div>
+
+      <div class="field-group">
+        <label>How confident are you in the accuracy of your current data and reporting?</label>
+        <div class="confidence-scale">
+          <label class="conf-option">
+            <input type="radio" name="confidenceScore" value="1" />
+            <div class="conf-option-inner"><div class="conf-number">1</div><div>Don't<br>trust it</div></div>
+          </label>
+          <label class="conf-option">
+            <input type="radio" name="confidenceScore" value="2" />
+            <div class="conf-option-inner"><div class="conf-number">2</div><div>Often<br>wrong</div></div>
+          </label>
+          <label class="conf-option">
+            <input type="radio" name="confidenceScore" value="3" />
+            <div class="conf-option-inner"><div class="conf-number">3</div><div>Mostly<br>right</div></div>
+          </label>
+          <label class="conf-option">
+            <input type="radio" name="confidenceScore" value="4" />
+            <div class="conf-option-inner"><div class="conf-number">4</div><div>Usually<br>accurate</div></div>
+          </label>
+          <label class="conf-option">
+            <input type="radio" name="confidenceScore" value="5" />
+            <div class="conf-option-inner"><div class="conf-number">5</div><div>Fully<br>confident</div></div>
+          </label>
+        </div>
+        <div class="conf-labels"><span>Low confidence</span><span>High confidence</span></div>
+        <div class="field-error" id="err-confidenceScore">Please select a confidence level.</div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep()">Next: Your Team →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Your Team -->
+    <div class="form-step fade-in" id="step-4">
+      <h2 class="step-heading">Your Team</h2>
+      <p class="step-subheading">Understanding who handles data today shapes the recommendations we make.</p>
+
+      <div class="field-group">
+        <label>Who currently "owns" data and reporting on your team?</label>
+        <div class="radio-group">
+          <label class="radio-card">
+            <input type="radio" name="dataOwner" value="no-one" />
+            <div class="radio-card-inner"><div class="radio-dot"></div><span class="radio-card-label">No one — it falls to whoever needs it</span></div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="dataOwner" value="one-person" />
+            <div class="radio-card-inner"><div class="radio-dot"></div><span class="radio-card-label">One person (admin, ops manager, etc.)</span></div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="dataOwner" value="small-team" />
+            <div class="radio-card-inner"><div class="radio-dot"></div><span class="radio-card-label">A small internal team</span></div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="dataOwner" value="outsourced" />
+            <div class="radio-card-inner"><div class="radio-dot"></div><span class="radio-card-label">We outsource it (bookkeeper, consultant, etc.)</span></div>
+          </label>
+        </div>
+        <div class="field-error" id="err-dataOwner">Please select an option.</div>
+      </div>
+
+      <div class="field-group">
+        <label>What is that person or team's comfort level with data tools?</label>
+        <div class="radio-group">
+          <label class="radio-card">
+            <input type="radio" name="teamComfort" value="beginner" />
+            <div class="radio-card-inner"><div class="radio-dot"></div><span class="radio-card-label">Beginner</span><span class="radio-card-desc">Basic spreadsheets</span></div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="teamComfort" value="intermediate" />
+            <div class="radio-card-inner"><div class="radio-dot"></div><span class="radio-card-label">Intermediate</span><span class="radio-card-desc">Formulas, pivot tables, basic reports</span></div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="teamComfort" value="advanced" />
+            <div class="radio-card-inner"><div class="radio-dot"></div><span class="radio-card-label">Advanced</span><span class="radio-card-desc">Power BI, SQL, dashboards</span></div>
+          </label>
+        </div>
+        <div class="field-error" id="err-teamComfort">Please select an option.</div>
+      </div>
+
+      <div class="field-group">
+        <label for="previousAttempts">Has your team tried to improve reporting before? What happened? <span class="optional">(optional)</span></label>
+        <textarea id="previousAttempts" placeholder="e.g. We tried to set up QuickBooks reports but nobody used them after the first month..."></textarea>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+        <button class="btn btn-primary" onclick="nextStep()">Next: Your Vision →</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Vision -->
+    <div class="form-step fade-in" id="step-5">
+      <h2 class="step-heading">Your Vision</h2>
+      <p class="step-subheading">Last section. These answers shape the strategic part of your report.</p>
+
+      <div class="field-group">
+        <label for="magicWand">If you could wave a magic wand and fix ONE data or reporting problem tomorrow, what would it be?</label>
+        <textarea id="magicWand" placeholder="e.g. I'd know exactly which clients are about to leave before they do..."></textarea>
+        <div class="field-error" id="err-magicWand">Please share your magic wand answer.</div>
+      </div>
+
+      <div class="field-group">
+        <label for="futureVision">What would "data working perfectly" look like for your business 12 months from now?</label>
+        <textarea id="futureVision" placeholder="e.g. Every Monday I'd have a dashboard showing revenue, leads, and team performance — and it would just appear automatically..."></textarea>
+        <div class="field-error" id="err-futureVision">Please describe your vision.</div>
+      </div>
+
+      <div class="field-group">
+        <label for="anythingElse">Anything else I should know before the audit? <span class="optional">(optional)</span></label>
+        <textarea id="anythingElse" placeholder="Any context about your industry, recent changes, specific concerns..."></textarea>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+        <button class="btn btn-primary btn-large" onclick="submitAudit()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          Generate My Report
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /form-card -->
+
+  <!-- ANALYSIS SCREEN -->
+  <div id="analysis-screen" class="fade-in">
+    <div class="analysis-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+    </div>
+    <h2>Analyzing Your Data</h2>
+    <p>Our AI is reviewing your responses and building a personalized report...</p>
+    <div class="analysis-bar-track">
+      <div class="analysis-bar-fill" id="analysis-bar"></div>
+    </div>
+    <div class="analysis-steps">
+      <div class="analysis-step" id="astep-1">
+        <div class="analysis-step-dot">1</div>
+        Assessing your data infrastructure...
+      </div>
+      <div class="analysis-step" id="astep-2">
+        <div class="analysis-step-dot">2</div>
+        Identifying reporting gaps...
+      </div>
+      <div class="analysis-step" id="astep-3">
+        <div class="analysis-step-dot">3</div>
+        Evaluating team capabilities...
+      </div>
+      <div class="analysis-step" id="astep-4">
+        <div class="analysis-step-dot">4</div>
+        Mapping automation opportunities...
+      </div>
+      <div class="analysis-step" id="astep-5">
+        <div class="analysis-step-dot">5</div>
+        Generating your personalized report...
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT -->
+  <div id="report-container" class="fade-in">
+
+    <div class="report-header">
+      <div class="eyebrow">Data Clarity Audit — Confidential Report</div>
+      <h2 id="report-title">Your Data Clarity Report</h2>
+      <div class="meta" id="report-meta">Prepared by Spry Data Partners</div>
+    </div>
+
+    <div class="report-body">
+
+      <!-- Score -->
+      <div class="report-section">
+        <div class="section-title">
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          Data Maturity Score
+        </div>
+        <div class="score-overview">
+          <div class="score-big">
+            <div class="score-number" id="score-number">—</div>
+            <div class="score-denom">/ 5.0</div>
+            <div class="score-label" id="score-category">—</div>
+          </div>
+          <div class="score-description">
+            <p id="score-description-text">Your score is being calculated...</p>
+          </div>
+        </div>
+        <div class="dimension-bars" id="dimension-bars"></div>
+      </div>
+
+      <!-- Priority Issues -->
+      <div class="report-section">
+        <div class="section-title">
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          Your Top 3 Priority Issues
+        </div>
+        <div class="issue-cards" id="priority-issues"></div>
+      </div>
+
+      <!-- Quick Wins -->
+      <div class="report-section">
+        <div class="section-title">
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Quick Wins — What You Can Do This Week
+        </div>
+        <div class="quick-wins" id="quick-wins"></div>
+      </div>
+
+      <!-- Roadmap -->
+      <div class="report-section">
+        <div class="section-title">
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </div>
+          Your 90-Day Data Clarity Roadmap
+        </div>
+        <div class="roadmap" id="roadmap"></div>
+      </div>
+
+      <!-- Automation -->
+      <div class="report-section">
+        <div class="section-title">
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+          </div>
+          Automation Opportunities (6–12 Month Horizon)
+        </div>
+        <div class="quick-wins" id="automation-opps"></div>
+      </div>
+
+    </div><!-- /report-body -->
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h3>Ready to Implement This Roadmap?</h3>
+      <p>Most clients don't have the time to do this themselves — that's where I come in. The Data Clarity Retainer is a done-for-you monthly service that handles the heavy lifting.</p>
+      <div class="cta-price">$1,500 <span>/ month</span></div>
+      <div class="cta-features">
+        <span class="cta-feature">Automated monthly reporting</span>
+        <span class="cta-feature">One strategy session/month</span>
+        <span class="cta-feature">Email & Slack support</span>
+        <span class="cta-feature">Monthly insights summary</span>
+      </div>
+      <button class="btn btn-primary btn-large" onclick="alert('Book a call — connect this to your calendar link')">Book a Free Strategy Call →</button>
+    </div>
+
+    <div class="report-actions">
+      <button class="btn btn-secondary" onclick="window.print()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Download PDF
+      </button>
+      <button class="btn btn-secondary" onclick="resetForm()">
+        ← Start a New Audit
+      </button>
+    </div>
+
+  </div><!-- /report-container -->
+
+</div><!-- /main-wrapper -->
+
+<footer>
+  &copy; 2025 Spry Data Partners &nbsp;|&nbsp; <a href="https://sprydp.com">sprydp.com</a> &nbsp;|&nbsp; Built for growing businesses
+</footer>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 5;
+  const stepLabels = ['About Your Business', 'Your Data Today', 'The Pain', 'Your Team', 'Your Vision'];
+  let formData = {};
+
+  // ── NAVIGATION ──────────────────────────────────────────
+  function nextStep() {
+    if (!validateStep(currentStep)) return;
+    if (currentStep < totalSteps) {
+      setStep(currentStep + 1);
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 1) setStep(currentStep - 1);
+  }
+
+  function setStep(n) {
+    document.getElementById('step-' + currentStep).classList.remove('active');
+    document.getElementById('dot-' + currentStep).classList.remove('active');
+    document.getElementById('dot-' + currentStep).classList.add('done');
+    if (n < currentStep) {
+      document.getElementById('dot-' + currentStep).classList.remove('done');
+    }
+    currentStep = n;
+    const el = document.getElementById('step-' + n);
+    el.classList.add('active', 'fade-in');
+    setTimeout(() => el.classList.remove('fade-in'), 500);
+    document.getElementById('dot-' + n).classList.add('active');
+    document.getElementById('dot-' + n).classList.remove('done');
+
+    const pct = Math.round((n / totalSteps) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-label').textContent = 'Step ' + n + ' of ' + totalSteps + ' — ' + stepLabels[n-1];
+    document.getElementById('progress-count').textContent = pct + '% complete';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── VALIDATION ──────────────────────────────────────────
+  function validateStep(n) {
+    let valid = true;
+    const show = (id) => { document.getElementById(id).classList.add('visible'); valid = false; };
+    const hide = (id) => document.getElementById(id).classList.remove('visible');
+
+    if (n === 1) {
+      const fn = document.getElementById('firstName').value.trim();
+      const em = document.getElementById('email').value.trim();
+      const co = document.getElementById('companyName').value.trim();
+      const ts = document.getElementById('teamSize').value;
+      const bg = document.getElementById('businessGoals').value.trim();
+      fn ? hide('err-firstName') : show('err-firstName');
+      (em && /\S+@\S+\.\S+/.test(em)) ? hide('err-email') : show('err-email');
+      co ? hide('err-companyName') : show('err-companyName');
+      ts ? hide('err-teamSize') : show('err-teamSize');
+      bg ? hide('err-businessGoals') : show('err-businessGoals');
+    }
+    if (n === 2) {
+      const tools = document.getElementById('softwareTools').value.trim();
+      const locs = document.querySelectorAll('input[name="dataLocation"]:checked');
+      const dash = document.querySelector('input[name="currentDashboards"]:checked');
+      tools ? hide('err-softwareTools') : show('err-softwareTools');
+      locs.length > 0 ? hide('err-dataLocation') : show('err-dataLocation');
+      dash ? hide('err-currentDashboards') : show('err-currentDashboards');
+    }
+    if (n === 3) {
+      const ts = document.getElementById('timeSink').value.trim();
+      const uq = document.getElementById('unansweredQuestion').value.trim();
+      const cs = document.querySelector('input[name="confidenceScore"]:checked');
+      ts ? hide('err-timeSink') : show('err-timeSink');
+      uq ? hide('err-unansweredQuestion') : show('err-unansweredQuestion');
+      cs ? hide('err-confidenceScore') : show('err-confidenceScore');
+    }
+    if (n === 4) {
+      const owner = document.querySelector('input[name="dataOwner"]:checked');
+      const comfort = document.querySelector('input[name="teamComfort"]:checked');
+      owner ? hide('err-dataOwner') : show('err-dataOwner');
+      comfort ? hide('err-teamComfort') : show('err-teamComfort');
+    }
+    if (n === 5) {
+      const mw = document.getElementById('magicWand').value.trim();
+      const fv = document.getElementById('futureVision').value.trim();
+      mw ? hide('err-magicWand') : show('err-magicWand');
+      fv ? hide('err-futureVision') : show('err-futureVision');
+    }
+    return valid;
+  }
+
+  // ── SUBMIT ──────────────────────────────────────────────
+  function submitAudit() {
+    if (!validateStep(5)) return;
+    collectFormData();
+    document.getElementById('form-card').style.display = 'none';
+    document.getElementById('progress-container').style.display = 'none';
+    document.getElementById('analysis-screen').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    runAnalysis();
+  }
+
+  function collectFormData() {
+    formData = {
+      firstName: document.getElementById('firstName').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      companyName: document.getElementById('companyName').value.trim(),
+      teamSize: document.getElementById('teamSize').value,
+      businessGoals: document.getElementById('businessGoals').value.trim(),
+      softwareTools: document.getElementById('softwareTools').value.trim(),
+      dataLocations: Array.from(document.querySelectorAll('input[name="dataLocation"]:checked')).map(el => el.value),
+      currentDashboards: document.querySelector('input[name="currentDashboards"]:checked')?.value,
+      timeSink: document.getElementById('timeSink').value.trim(),
+      unansweredQuestion: document.getElementById('unansweredQuestion').value.trim(),
+      confidenceScore: parseInt(document.querySelector('input[name="confidenceScore"]:checked')?.value || '2'),
+      dataOwner: document.querySelector('input[name="dataOwner"]:checked')?.value,
+      teamComfort: document.querySelector('input[name="teamComfort"]:checked')?.value,
+      previousAttempts: document.getElementById('previousAttempts').value.trim(),
+      magicWand: document.getElementById('magicWand').value.trim(),
+      futureVision: document.getElementById('futureVision').value.trim(),
+      anythingElse: document.getElementById('anythingElse').value.trim()
+    };
+  }
+
+  // ── ANALYSIS ANIMATION ──────────────────────────────────
+  function runAnalysis() {
+    const steps = [
+      { id: 'astep-1', bar: 20, delay: 0 },
+      { id: 'astep-2', bar: 40, delay: 1600 },
+      { id: 'astep-3', bar: 60, delay: 3200 },
+      { id: 'astep-4', bar: 80, delay: 4800 },
+      { id: 'astep-5', bar: 100, delay: 6400 },
+    ];
+    steps.forEach((s, i) => {
+      setTimeout(() => {
+        if (i > 0) {
+          const prev = document.getElementById(steps[i-1].id);
+          prev.classList.remove('active');
+          prev.classList.add('done');
+          prev.querySelector('.analysis-step-dot').textContent = '✓';
+        }
+        document.getElementById(s.id).classList.add('active');
+        document.getElementById('analysis-bar').style.width = s.bar + '%';
+      }, s.delay);
+    });
+    setTimeout(() => {
+      document.getElementById('astep-5').classList.remove('active');
+      document.getElementById('astep-5').classList.add('done');
+      document.getElementById('astep-5').querySelector('.analysis-step-dot').textContent = '✓';
+      setTimeout(showReport, 400);
+    }, 8000);
+  }
+
+  // ── REPORT GENERATION ───────────────────────────────────
+  function showReport() {
+    document.getElementById('analysis-screen').style.display = 'none';
+    const scores = calculateScores();
+    const issues = getPriorityIssues();
+    const wins = getQuickWins();
+    const roadmap = getRoadmap();
+    const automation = getAutomation();
+
+    // Header
+    document.getElementById('report-title').textContent = formData.firstName + "'s Data Clarity Report";
+    document.getElementById('report-meta').textContent =
+      formData.companyName + ' · Prepared by Spry Data Partners · ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    // Score
+    document.getElementById('score-number').textContent = scores.overall;
+    const cat = scores.overall < 2 ? 'At Risk' : scores.overall < 3 ? 'Developing' : scores.overall < 4 ? 'Functional' : 'Strong';
+    document.getElementById('score-category').textContent = cat;
+    document.getElementById('score-description-text').textContent = getScoreDescription(scores);
+
+    // Dimension bars
+    const dims = [
+      { label: 'Data Infrastructure', score: scores.infrastructure },
+      { label: 'Reporting Capability', score: scores.reporting },
+      { label: 'Team Data Literacy', score: scores.literacy },
+      { label: 'Decision-Making Quality', score: scores.decision },
+      { label: 'Automation Readiness', score: scores.automation }
+    ];
+    document.getElementById('dimension-bars').innerHTML = dims.map(d => `
+      <div class="dimension-bar">
+        <div class="dimension-bar-header"><span>${d.label}</span><span>${d.score.toFixed(1)} / 5</span></div>
+        <div class="dimension-bar-track"><div class="dimension-bar-fill" style="width:${(d.score/5)*100}%"></div></div>
+      </div>`).join('');
+
+    // Issues
+    document.getElementById('priority-issues').innerHTML = issues.map((iss, i) => `
+      <div class="issue-card">
+        <div class="issue-card-header">
+          <div class="issue-number">${i+1}</div>
+          <div class="issue-name">${iss.name}</div>
+        </div>
+        <div class="issue-desc">${iss.desc}</div>
+        <span class="issue-impact">⚡ ${iss.impact}</span>
+      </div>`).join('');
+
+    // Quick wins
+    const winIcons = ['📋', '🔗', '📊', '🗂️', '⏰'];
+    document.getElementById('quick-wins').innerHTML = wins.map((w, i) => `
+      <div class="quick-win">
+        <div class="win-icon">${winIcons[i] || '✓'}</div>
+        <div class="win-content">
+          <div class="win-title">${w.title}</div>
+          <div class="win-desc">${w.desc}</div>
+        </div>
+      </div>`).join('');
+
+    // Roadmap
+    document.getElementById('roadmap').innerHTML = roadmap.map(phase => `
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-label">${phase.label}</div>
+        <div class="roadmap-phase-title">${phase.title}</div>
+        <ul class="roadmap-items">${phase.items.map(it => `<li>${it}</li>`).join('')}</ul>
+      </div>`).join('');
+
+    // Automation
+    const autoIcons = ['🤖', '📧', '📈'];
+    document.getElementById('automation-opps').innerHTML = automation.map((a, i) => `
+      <div class="quick-win">
+        <div class="win-icon">${autoIcons[i] || '⚙️'}</div>
+        <div class="win-content">
+          <div class="win-title">${a.title}</div>
+          <div class="win-desc">${a.desc}</div>
+        </div>
+      </div>`).join('');
+
+    document.getElementById('report-container').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── SCORING LOGIC ────────────────────────────────────────
+  function calculateScores() {
+    const locs = formData.dataLocations || [];
+    const tools = (formData.softwareTools || '').toLowerCase();
+
+    let infrastructure = 2;
+    if (locs.includes('industry-software') || locs.includes('crm')) infrastructure = 4;
+    else if (locs.includes('accounting')) infrastructure = 3;
+    else if (locs.includes('spreadsheets') && !locs.includes('heads')) infrastructure = 2;
+    else if (locs.includes('heads')) infrastructure = 1;
+
+    let reporting = 1.5;
+    if (formData.currentDashboards === 'yes') reporting = 4.5;
+    else if (formData.currentDashboards === 'sort-of') reporting = 2.5;
+
+    let literacy = 2;
+    if (formData.teamComfort === 'advanced') literacy = 4.5;
+    else if (formData.teamComfort === 'intermediate') literacy = 3;
+    else literacy = 1.5;
+
+    const decision = formData.confidenceScore || 2;
+
+    let automation = 2;
+    if (tools.includes('salesforce') || tools.includes('power bi') || tools.includes('azure') || tools.includes('snowflake')) automation = 4;
+    else if (tools.includes('hubspot') || tools.includes('quickbooks') || tools.includes('xero')) automation = 3;
+    else if (tools.includes('google') || tools.includes('excel')) automation = 2;
+    else automation = 1.5;
+
+    const overall = ((infrastructure + reporting + literacy + decision + automation) / 5).toFixed(1);
+    return { infrastructure, reporting, literacy, decision, automation, overall: parseFloat(overall) };
+  }
+
+  function getScoreDescription(scores) {
+    const name = formData.firstName;
+    const company = formData.companyName;
+    if (scores.overall < 2) {
+      return `${company} is in the early stages of its data journey. The good news: even small improvements will have an immediate, visible impact on how decisions get made. The priority is establishing basic reliability before building anything sophisticated.`;
+    } else if (scores.overall < 3) {
+      return `${company} has some data infrastructure in place but it's inconsistent and largely manual. You're making decisions with incomplete information more often than you realize. The opportunity here is significant — structured improvements will compound quickly.`;
+    } else if (scores.overall < 4) {
+      return `${company} has a functional data operation but it's not yet working for you at full capacity. Reporting exists but requires too much manual effort, and automation is within reach. The next 90 days are about turning functional into efficient.`;
+    } else {
+      return `${company} has a strong data foundation relative to businesses at your stage. The opportunity is shifting from operational reporting to predictive intelligence — using data to get ahead of problems rather than react to them.`;
+    }
+  }
+
+  // ── PRIORITY ISSUES ─────────────────────────────────────
+  function getPriorityIssues() {
+    const issues = [];
+    const locs = formData.dataLocations || [];
+    const tools = (formData.softwareTools || '').toLowerCase();
+
+    if (locs.includes('spreadsheets') || locs.includes('heads')) {
+      issues.push({
+        name: 'Data is Fragmented and Hard to Trust',
+        desc: `Your key business data is spread across multiple disconnected sources${locs.includes('spreadsheets') ? ', including spreadsheets that require manual updates' : ''}. This makes it nearly impossible to get a single, reliable view of what's actually happening in the business — and creates risk every time someone makes a decision based on the wrong version.`,
+        impact: 'Estimated 3–6 hours/week in manual reconciliation'
+      });
+    }
+
+    if (formData.currentDashboards === 'no' || formData.currentDashboards === 'sort-of') {
+      issues.push({
+        name: 'Reporting Requires Too Much Manual Work',
+        desc: `Based on what you described — "${formData.timeSink.substring(0, 80)}${formData.timeSink.length > 80 ? '...' : ''}" — your team is spending significant time on tasks that should be automated. Every hour spent assembling reports is an hour not spent acting on them.`,
+        impact: 'Recoverable time: potentially 4–10 hrs/month'
+      });
+    }
+
+    if (formData.dataOwner === 'no-one' || formData.confidenceScore <= 2) {
+      issues.push({
+        name: 'No Clear Data Ownership or Accountability',
+        desc: `Without a designated owner for your data and reporting, things fall through the cracks. Reports are inconsistent, data quality degrades over time, and nobody has the mandate to improve things. This is often the root cause behind low confidence in the numbers.`,
+        impact: `Confidence in your data: ${formData.confidenceScore}/5 — below the threshold for reliable decisions`
+      });
+    }
+
+    if (issues.length < 3) {
+      issues.push({
+        name: 'Key Business Questions Are Going Unanswered',
+        desc: `You mentioned wanting to know: "${formData.unansweredQuestion.substring(0, 100)}${formData.unansweredQuestion.length > 100 ? '...' : ''}" — This type of insight is typically achievable with existing data, but requires the right structure to surface it. Right now, that question likely gets answered too late or not at all.`,
+        impact: 'Delayed decisions cost money — and insight gaps compound'
+      });
+    }
+
+    return issues.slice(0, 3);
+  }
+
+  // ── QUICK WINS ──────────────────────────────────────────
+  function getQuickWins() {
+    const wins = [];
+    const locs = formData.dataLocations || [];
+
+    wins.push({
+      title: 'Create a Single "Source of Truth" Document',
+      desc: `Before anything else, spend 30 minutes documenting every system where business data lives, who owns it, and how often it updates. This becomes your data map — the foundation for everything else.`
+    });
+
+    if (locs.includes('spreadsheets')) {
+      wins.push({
+        title: 'Standardize Your Most-Used Spreadsheet Report',
+        desc: `Pick the one report your team uses most and rebuild it with consistent column names, locked formulas, and a single input tab. Add data validation so garbage can't be entered. This alone eliminates a class of errors.`
+      });
+    }
+
+    wins.push({
+      title: `Assign a Data Owner — Even Part-Time`,
+      desc: `Designate someone on your team whose job includes "keeping the numbers right." Give them 2–4 hours/week to own this. The job is: catch errors before they spread, and flag when reports don't add up.`
+    });
+
+    wins.push({
+      title: 'Build a Weekly "Business Health" Checklist',
+      desc: `Identify 5 numbers that, if you knew them every Monday morning, would change how you ran the week. Write them down. Then figure out the fastest way to get those 5 numbers — even manually to start.`
+    });
+
+    wins.push({
+      title: `Connect Your Tools — Start With One Integration`,
+      desc: `If you use both accounting software and a CRM, connect them. Most tools (QuickBooks, Salesforce, HubSpot, etc.) have native integrations or Zapier connections that take 30 minutes to set up and eliminate an entire category of manual data entry.`
+    });
+
+    return wins.slice(0, 4);
+  }
+
+  // ── ROADMAP ─────────────────────────────────────────────
+  function getRoadmap() {
+    return [
+      {
+        label: 'Days 1–30',
+        title: 'Foundation — Eliminate Manual Work and Establish Reliability',
+        items: [
+          'Complete the data source inventory (where everything lives)',
+          'Designate a data owner with a defined weekly responsibility',
+          'Standardize your top 3 most-used reports',
+          'Set up at least one tool integration to eliminate manual data transfer'
+        ]
+      },
+      {
+        label: 'Days 31–60',
+        title: 'Visibility — Build Dashboards That Answer Your Key Questions',
+        items: [
+          `Build a simple dashboard that answers: "${formData.unansweredQuestion.substring(0, 60)}${formData.unansweredQuestion.length > 60 ? '...' : ''}"`,
+          'Create a weekly business health report that runs automatically',
+          'Define KPIs for each department and make them visible to leadership',
+          'Implement basic data quality checks on high-stakes reports'
+        ]
+      },
+      {
+        label: 'Days 61–90',
+        title: 'Intelligence — Layer In Automation and Predictive Insights',
+        items: [
+          `Begin work on: "${formData.magicWand.substring(0, 60)}${formData.magicWand.length > 60 ? '...' : ''}"`,
+          'Automate your most time-consuming recurring report',
+          'Set up alert systems for anomalies in key metrics',
+          'Review and validate 90-day improvements against baseline'
+        ]
+      }
+    ];
+  }
+
+  // ── AUTOMATION ──────────────────────────────────────────
+  function getAutomation() {
+    const tools = (formData.softwareTools || '').toLowerCase();
+    const opps = [];
+
+    opps.push({
+      title: 'Automated Weekly Reporting Dashboard',
+      desc: `Replace the manual work your team does to pull together reports. An automated dashboard refreshes daily or weekly and delivers a summary to your inbox — zero human effort required. Feasibility: Easy. Tools: Power BI or Google Looker Studio connected to your existing systems.`
+    });
+
+    if (formData.unansweredQuestion.toLowerCase().includes('customer') ||
+        formData.unansweredQuestion.toLowerCase().includes('client') ||
+        formData.unansweredQuestion.toLowerCase().includes('donor')) {
+      opps.push({
+        title: 'AI-Powered Client / Customer Risk Scoring',
+        desc: `An AI model trained on your historical data can flag accounts that show early signs of churn — before they leave. Delivers a weekly "at-risk" list your team can act on. Feasibility: Medium. Requires 12+ months of historical data.`
+      });
+    } else {
+      opps.push({
+        title: 'Automated Anomaly Detection & Alerts',
+        desc: `Instead of waiting for someone to notice something is wrong, set up alerts that notify your team when key metrics move outside normal ranges. Catch problems in hours instead of weeks. Feasibility: Medium. Tools: Power BI alerts, or custom monitoring.`
+      });
+    }
+
+    opps.push({
+      title: 'AI-Generated Monthly Business Summary',
+      desc: `An AI assistant that reads your data at month-end and writes a plain-English summary: what went up, what went down, what needs attention. Delivers to your inbox automatically. Feasibility: Medium-Hard. Requires structured data foundation first.`
+    });
+
+    return opps;
+  }
+
+  // ── RESET ────────────────────────────────────────────────
+  function resetForm() {
+    document.getElementById('report-container').style.display = 'none';
+    document.getElementById('form-card').style.display = 'block';
+    document.getElementById('progress-container').style.display = 'block';
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.step-dot').forEach(d => { d.classList.remove('active', 'done'); });
+    currentStep = 1;
+    document.getElementById('step-1').classList.add('active');
+    document.getElementById('dot-1').classList.add('active');
+    document.getElementById('progress-fill').style.width = '20%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
